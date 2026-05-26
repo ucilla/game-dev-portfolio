@@ -3,6 +3,15 @@ const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
 const os = require('os');
+// Ensure a WebSocket implementation is available for supabase realtime on Node < 22
+if (typeof global.WebSocket === 'undefined') {
+  try {
+    global.WebSocket = require('ws');
+  } catch (e) {
+    // 'ws' may not be installed in some environments — realtime features may fail without it.
+  }
+}
+
 const { createClient } = require('@supabase/supabase-js');
 
 const app = express();
