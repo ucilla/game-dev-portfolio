@@ -23,7 +23,7 @@
       flex-direction: column;
       gap: 18px;
       background:
-        radial-gradient(circle at top, rgba(56, 189, 248, 0.18), transparent 35%),
+        radial-gradient(circle at top, rgba(0, 255, 102, 0.18), transparent 35%),
         linear-gradient(180deg, #020617 0%, #0f172a 100%);
       color: #f8fafc;
       transition: opacity 220ms ease, visibility 220ms ease;
@@ -42,8 +42,8 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       text-align: center;
-      color: #38bdf8;
-      text-shadow: 0 0 32px rgba(56, 189, 248, 0.35);
+      color: #6bff95;
+      text-shadow: 0 0 32px rgba(0, 255, 102, 0.35);
     }
 
     .page-loader-spinner {
@@ -51,7 +51,7 @@
       height: 72px;
       border-radius: 50%;
       border: 4px solid rgba(148, 163, 184, 0.22);
-      border-top-color: #38bdf8;
+      border-top-color: #6bff95;
       animation: pageLoaderSpin 0.85s linear infinite;
     }
 
