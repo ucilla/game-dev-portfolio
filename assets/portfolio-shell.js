@@ -338,7 +338,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .shell-enhanced body {
       background:
-        radial-gradient(circle at top, rgba(56, 189, 248, 0.14), transparent 30%),
+        radial-gradient(circle at top, rgba(0, 255, 102, 0.12), transparent 30%),
         linear-gradient(180deg, #020617 0%, #0f172a 55%, #020617 100%);
     }
 
@@ -346,9 +346,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       max-width: 1280px;
       margin: 24px auto 0;
       padding: 24px;
-      border: 1px solid rgba(56, 189, 248, 0.35);
+      border: 1px solid rgba(0, 255, 102, 0.28);
       border-radius: 20px;
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.95), rgba(15, 23, 42, 0.88));
+      background: linear-gradient(180deg, rgba(2, 10, 2, 0.95), rgba(0, 18, 6, 0.88));
       box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
       position: relative;
       overflow: hidden;
@@ -375,9 +375,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     .shell-terminal, .shell-tree, .shell-card, .shell-code, .shell-console {
       position: relative;
       z-index: 1;
-      border: 1px solid rgba(56, 189, 248, 0.25);
+      border: 1px solid rgba(0, 255, 102, 0.22);
       border-radius: 16px;
-      background: rgba(2, 6, 23, 0.82);
+      background: rgba(0, 10, 4, 0.82);
       box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.05);
     }
 
@@ -393,7 +393,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      color: #38bdf8;
+      color: #6bff95;
       font-size: 0.78rem;
     }
 
@@ -406,8 +406,8 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     }
 
     .shell-title span {
-      color: #38bdf8;
-      text-shadow: 0 0 24px rgba(56, 189, 248, 0.3);
+      color: #6bff95;
+      text-shadow: 0 0 24px rgba(0, 255, 102, 0.26);
     }
 
     .shell-subtitle {
@@ -426,7 +426,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .shell-chip {
       padding: 7px 11px;
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      border: 1px solid rgba(0, 255, 102, 0.24);
       border-radius: 999px;
       background: rgba(15, 23, 42, 0.7);
       color: #e2e8f0;
@@ -437,8 +437,8 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .shell-chip:hover {
       transform: translateY(-1px);
-      border-color: rgba(56, 189, 248, 0.7);
-      background: rgba(14, 165, 233, 0.15);
+      border-color: rgba(0, 255, 102, 0.7);
+      background: rgba(0, 255, 102, 0.12);
     }
 
     .shell-input-row {
@@ -458,8 +458,8 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .shell-input {
       flex: 1;
-      background: rgba(2, 6, 23, 0.92);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      background: rgba(0, 10, 4, 0.92);
+      border: 1px solid rgba(0, 255, 102, 0.24);
       color: #f8fafc;
       border-radius: 10px;
       padding: 12px 14px;
@@ -467,14 +467,14 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       outline: none;
     }
 
-    .shell-input:focus { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.12); }
+    .shell-input:focus { border-color: #6bff95; box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.12); }
 
     .shell-submit {
       border: 0;
       border-radius: 10px;
       padding: 12px 14px;
-      background: linear-gradient(180deg, #38bdf8, #0ea5e9);
-      color: #001018;
+      background: linear-gradient(180deg, #6bff95, #22c55e);
+      color: #001408;
       font-weight: 800;
       cursor: pointer;
     }
@@ -535,15 +535,17 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .shell-card:hover { transform: translateY(-3px); border-color: rgba(56, 189, 248, 0.58); box-shadow: 0 18px 40px rgba(0,0,0,0.25); }
 
-    .shell-card h3 { margin: 0 0 10px; color: #38bdf8; }
+    .shell-card:hover { transform: translateY(-3px); border-color: rgba(0, 255, 102, 0.58); box-shadow: 0 18px 40px rgba(0,0,0,0.25); }
+
+    .shell-card h3 { margin: 0 0 10px; color: #6bff95; }
     .shell-card p { margin: 0 0 12px; color: #cbd5e1; font-size: 0.92rem; }
     .shell-card .meta { display: flex; flex-wrap: wrap; gap: 8px; }
     .shell-tag {
       padding: 4px 8px;
       border-radius: 999px;
-      background: rgba(56, 189, 248, 0.12);
-      color: #e0f2fe;
-      border: 1px solid rgba(56, 189, 248, 0.2);
+      background: rgba(0, 255, 102, 0.12);
+      color: #d9ffe3;
+      border: 1px solid rgba(0, 255, 102, 0.2);
       font-size: 0.76rem;
     }
 
@@ -555,8 +557,8 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     }
 
     .shell-button {
-      border: 1px solid rgba(56, 189, 248, 0.32);
-      background: rgba(15, 23, 42, 0.84);
+      border: 1px solid rgba(0, 255, 102, 0.28);
+      background: rgba(0, 10, 4, 0.84);
       color: #f8fafc;
       border-radius: 10px;
       padding: 9px 12px;
@@ -566,8 +568,8 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     }
 
     .shell-button.primary {
-      background: linear-gradient(180deg, #38bdf8, #0ea5e9);
-      color: #001018;
+      background: linear-gradient(180deg, #6bff95, #22c55e);
+      color: #001408;
       border-color: transparent;
       font-weight: 800;
     }
@@ -828,7 +830,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
         }
       }
 
-      context.fillStyle = 'rgba(0, 0, 0, 0.08)';
+      context.fillStyle = 'rgba(0, 0, 0, 0.05)';
       context.fillRect(0, 0, width, height);
       context.font = `${fontSize}px Consolas, monospace`;
 
@@ -841,10 +843,10 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
         context.fillStyle = isBright ? 'rgba(180, 255, 205, 0.96)' : 'rgba(0, 255, 120, 0.72)';
         context.fillText(char, x, y);
 
-        if (y > height && Math.random() > 0.975) {
+        if (y > height && Math.random() > 0.99) {
           columns[index] = 0;
         } else {
-          columns[index] += 0.9 + Math.random() * 0.7;
+          columns[index] += 0.35 + Math.random() * 0.18;
         }
       }
 
