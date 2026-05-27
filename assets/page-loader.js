@@ -42,7 +42,7 @@
       letter-spacing: 0.28em;
       text-transform: uppercase;
       text-align: center;
-      color: #6bff95;
+      color: #ffffff;
       text-shadow: 0 0 32px rgba(0, 255, 102, 0.35);
     }
 
@@ -57,7 +57,7 @@
 
     .page-loader-subtitle {
       margin: 0;
-      color: #cbd5e1;
+      color: #ffffff;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       font-size: 0.95rem;
       letter-spacing: 0.08em;
@@ -73,7 +73,7 @@
   overlay.className = 'page-loader-overlay';
   overlay.innerHTML = `
     <div class="page-loader-spinner" aria-hidden="true"></div>
-    <h1 class="page-loader-title">Portfolio</h1>
+    <h1 class="page-loader-title">MATRIX</h1>
     <p class="page-loader-subtitle">Chargement...</p>
   `;
 

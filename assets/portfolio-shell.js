@@ -200,7 +200,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .matrix-console-title {
       margin: 0;
-      color: #d9ffe3;
+      color: #ffffff;
       font-size: 1rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
@@ -239,7 +239,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       margin: 0;
       padding: 16px;
       overflow: auto;
-      color: #d7ffe0;
+      color: #ffffff;
       font-family: 'Consolas', 'Courier New', monospace;
       font-size: 0.95rem;
       line-height: 1.6;
@@ -251,7 +251,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     }
 
     .matrix-line.muted {
-      color: #7fd89a;
+      color: #d7ffe0;
     }
 
     .matrix-line.accent {
@@ -339,7 +339,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     .shell-enhanced body {
       background:
         radial-gradient(circle at top, rgba(0, 255, 102, 0.12), transparent 30%),
-        linear-gradient(180deg, #020617 0%, #0f172a 55%, #020617 100%);
+        linear-gradient(180deg, #000000 0%, #001409 55%, #000000 100%);
     }
 
     .shell-panel {
@@ -348,7 +348,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       padding: 24px;
       border: 1px solid rgba(0, 255, 102, 0.28);
       border-radius: 20px;
-      background: linear-gradient(180deg, rgba(2, 10, 2, 0.95), rgba(0, 18, 6, 0.88));
+      background: linear-gradient(180deg, rgba(0, 10, 4, 0.96), rgba(0, 24, 8, 0.9));
       box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
       position: relative;
       overflow: hidden;
@@ -377,8 +377,8 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       z-index: 1;
       border: 1px solid rgba(0, 255, 102, 0.22);
       border-radius: 16px;
-      background: rgba(0, 10, 4, 0.82);
-      box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.05);
+      background: rgba(0, 0, 0, 0.84);
+      box-shadow: inset 0 0 0 1px rgba(0, 255, 102, 0.05);
     }
 
     .shell-terminal {
@@ -413,7 +413,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     .shell-subtitle {
       margin: 12px 0 18px;
       max-width: 56ch;
-      color: #cbd5e1;
+      color: #ffffff;
       font-size: 1rem;
     }
 
@@ -428,7 +428,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       padding: 7px 11px;
       border: 1px solid rgba(0, 255, 102, 0.24);
       border-radius: 999px;
-      background: rgba(15, 23, 42, 0.7);
+      background: rgba(0, 0, 0, 0.72);
       color: #e2e8f0;
       font-size: 0.82rem;
       cursor: pointer;
@@ -447,7 +447,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       align-items: center;
       margin-top: auto;
       padding-top: 12px;
-      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      border-top: 1px solid rgba(0, 255, 102, 0.12);
     }
 
     .shell-prompt {
@@ -458,7 +458,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .shell-input {
       flex: 1;
-      background: rgba(0, 10, 4, 0.92);
+      background: rgba(0, 0, 0, 0.92);
       border: 1px solid rgba(0, 255, 102, 0.24);
       color: #f8fafc;
       border-radius: 10px;
@@ -486,9 +486,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       overflow: auto;
       border-radius: 12px;
       background: rgba(0, 0, 0, 0.42);
-      border: 1px solid rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(0, 255, 102, 0.12);
       font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      color: #cbd5e1;
+      color: #ffffff;
       white-space: pre-wrap;
       line-height: 1.5;
     }
@@ -503,7 +503,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     .tree-branch {
       padding: 12px;
       border-radius: 12px;
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.95), rgba(2, 6, 23, 0.8));
+      background: linear-gradient(180deg, rgba(0, 18, 6, 0.95), rgba(0, 0, 0, 0.84));
       border: 1px solid rgba(34, 197, 94, 0.18);
     }
 
@@ -517,9 +517,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
 
     .tree-item { display: grid; gap: 6px; margin-bottom: 10px; }
     .tree-item:last-child { margin-bottom: 0; }
-    .tree-item span { display: flex; justify-content: space-between; color: #cbd5e1; font-size: 0.85rem; }
-    .tree-bar { height: 8px; border-radius: 999px; background: rgba(148, 163, 184, 0.14); overflow: hidden; }
-    .tree-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #22c55e, #38bdf8); }
+    .tree-item span { display: flex; justify-content: space-between; color: #ffffff; font-size: 0.85rem; }
+    .tree-bar { height: 8px; border-radius: 999px; background: rgba(0, 255, 102, 0.14); overflow: hidden; }
+    .tree-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #22c55e, #ffffff); }
 
     .shell-grid {
       margin-top: 18px;
@@ -533,12 +533,10 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
-    .shell-card:hover { transform: translateY(-3px); border-color: rgba(56, 189, 248, 0.58); box-shadow: 0 18px 40px rgba(0,0,0,0.25); }
-
     .shell-card:hover { transform: translateY(-3px); border-color: rgba(0, 255, 102, 0.58); box-shadow: 0 18px 40px rgba(0,0,0,0.25); }
 
     .shell-card h3 { margin: 0 0 10px; color: #6bff95; }
-    .shell-card p { margin: 0 0 12px; color: #cbd5e1; font-size: 0.92rem; }
+    .shell-card p { margin: 0 0 12px; color: #ffffff; font-size: 0.92rem; }
     .shell-card .meta { display: flex; flex-wrap: wrap; gap: 8px; }
     .shell-tag {
       padding: 4px 8px;
@@ -598,14 +596,14 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     }
 
     .mission-card, .code-snippet {
-      border: 1px solid rgba(56, 189, 248, 0.24);
-      background: linear-gradient(180deg, rgba(2, 6, 23, 0.92), rgba(15, 23, 42, 0.86));
+      border: 1px solid rgba(0, 255, 102, 0.22);
+      background: linear-gradient(180deg, rgba(0, 10, 4, 0.92), rgba(0, 18, 6, 0.86));
       border-radius: 16px;
       padding: 16px;
       box-shadow: 0 18px 40px rgba(0,0,0,0.18);
     }
 
-    .mission-card h2, .code-snippet h2 { margin: 0 0 10px; color: #38bdf8; font-size: 1.05rem; }
+    .mission-card h2, .code-snippet h2 { margin: 0 0 10px; color: #ffffff; font-size: 1.05rem; }
     .mission-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
 
     .code-snippet pre {
@@ -613,12 +611,45 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       overflow: auto;
       padding: 14px;
       border-radius: 12px;
-      background: #020617;
-      color: #e2e8f0;
+      background: #000000;
+      color: #ffffff;
       font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
       font-size: 0.84rem;
       line-height: 1.55;
-      border: 1px solid rgba(148, 163, 184, 0.14);
+      border: 1px solid rgba(0, 255, 102, 0.14);
+    }
+
+    .project-description-input {
+      width: 100%;
+      min-height: 180px;
+      box-sizing: border-box;
+      resize: vertical;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 102, 0.18);
+      background: #000000;
+      color: #ffffff;
+      padding: 14px;
+      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      outline: none;
+    }
+
+    .project-description-input:focus {
+      border-color: #6bff95;
+      box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.14);
+    }
+
+    .project-description-preview {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0, 255, 102, 0.14);
+      background: rgba(0, 0, 0, 0.58);
+      color: #ffffff;
+      min-height: 88px;
+      white-space: pre-wrap;
+      line-height: 1.55;
     }
 
     .project-console {
@@ -627,7 +658,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       padding: 0 20px;
     }
 
-    .project-console .console-lines { padding: 16px; border-radius: 16px; border: 1px solid rgba(56, 189, 248, 0.2); background: rgba(2, 6, 23, 0.82); }
+    .project-console .console-lines { padding: 16px; border-radius: 16px; border: 1px solid rgba(0, 255, 102, 0.2); background: rgba(0, 0, 0, 0.82); color: #ffffff; }
 
     @media (max-width: 920px) {
       .shell-top, .project-hud { grid-template-columns: 1fr; }
@@ -820,7 +851,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     const drawMatrix = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      const fontSize = 18;
+      const fontSize = 20;
       const columnCount = Math.max(1, Math.floor(width / fontSize));
 
       if (columns.length !== columnCount) {
@@ -838,9 +869,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
         const char = Math.random() > 0.5 ? '1' : '0';
         const x = index * fontSize;
         const y = columns[index] * fontSize;
-        const isBright = Math.random() > 0.94;
+        const isBright = Math.random() > 0.965;
 
-        context.fillStyle = isBright ? 'rgba(180, 255, 205, 0.96)' : 'rgba(0, 255, 120, 0.72)';
+        context.fillStyle = isBright ? '#ffffff' : 'rgba(107, 255, 149, 0.9)';
         context.fillText(char, x, y);
 
         if (y > height && Math.random() > 0.99) {
@@ -911,8 +942,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
         </div>
       </div>
       <div class="code-snippet">
-        <h2>Code Snippet</h2>
-        <pre><code>${snippets[project.id] || snippets['1']}</code></pre>
+        <h2>Description</h2>
+        <textarea class="project-description-input" id="project-description-input" aria-label="Description du jeu">Décris ici ton jeu: concept, gameplay, objectif, contraintes techniques, et ce que tu as développé.</textarea>
+        <div class="project-description-preview" id="project-description-preview"></div>
       </div>
     `;
 
@@ -928,6 +960,18 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       </div>
     `;
     container.insertAdjacentElement('afterend', consoleWrap);
+
+    const descriptionInput = hud.querySelector('#project-description-input');
+    const descriptionPreview = hud.querySelector('#project-description-preview');
+    const syncDescription = () => {
+      const value = descriptionInput.value.trim();
+      descriptionPreview.textContent = value || 'Tu peux écrire ici une vraie description du jeu.';
+    };
+
+    if (descriptionInput && descriptionPreview) {
+      descriptionInput.addEventListener('input', syncDescription);
+      syncDescription();
+    }
 
     const playButton = hud.querySelector('#project-play-button');
     playButton.addEventListener('click', () => {
