@@ -7,6 +7,7 @@
     const mediaDatabaseName = 'portfolio-dev-media';
     const mediaStoreName = 'media-files';
     const objectUrlCache = new Map();
+    let uploadStatusNode = null;
 
     const selectorsByPage = () => {
         if (document.querySelector('.projects-grid')) {
@@ -66,6 +67,21 @@
             .dev-mode-hidden { display: none !important; }
             .dev-mode-panel h3 { margin: 0 0 12px 0; font-size: 1.1rem; }
             .dev-mode-panel .meta { color: #94a3b8; font-size: 0.9rem; margin-bottom: 12px; }
+            .dev-mode-status {
+                display: none;
+                margin: 0 0 12px 0;
+                padding: 10px 12px;
+                border-radius: 8px;
+                font-size: 0.88rem;
+                line-height: 1.4;
+                background: rgba(15, 23, 42, 0.95);
+                border: 1px solid #334155;
+                color: #cbd5e1;
+            }
+            .dev-mode-status.is-visible { display: block; }
+            .dev-mode-status.is-loading { border-color: #38bdf8; color: #e0f2fe; }
+            .dev-mode-status.is-success { border-color: #22c55e; color: #dcfce7; }
+            .dev-mode-status.is-error { border-color: #ef4444; color: #fee2e2; }
             .dev-mode-field { margin-bottom: 12px; }
             .dev-mode-field label { display: block; font-size: 0.85rem; color: #cbd5e1; margin-bottom: 4px; }
             .dev-mode-field input, .dev-mode-field textarea {
@@ -183,24 +199,69 @@
         const formData = new FormData();
         formData.append('file', file);
 
-        const response = await fetch(uploadEndpoint, {
-            method: 'POST',
-            body: formData
+        return new Promise((resolve, reject) => {
+            const request = new XMLHttpRequest();
+            request.open('POST', uploadEndpoint, true);
+
+            request.upload.addEventListener('progress', (event) => {
+                if (event.lengthComputable) {
+                    const percent = Math.round((event.loaded / event.total) * 100);
+                    setUploadStatus(`Envoi de ${file.name}... ${percent}%`, 'loading');
+                } else {
+                    setUploadStatus(`Envoi de ${file.name}...`, 'loading');
+                }
+            });
+
+            request.addEventListener('load', () => {
+                let payload = null;
+                try {
+                    payload = JSON.parse(request.responseText || '{}');
+                } catch {
+                    payload = null;
+                }
+
+                if (request.status < 200 || request.status >= 300) {
+                    const message = payload?.error || payload?.warning || `Upload failed (${request.status})`;
+                    setUploadStatus(message, 'error');
+                    reject(new Error(message));
+                    return;
+                }
+
+                if (payload?.warning) {
+                    setUploadStatus(payload.warning, 'success');
+                } else {
+                    setUploadStatus(`Upload terminé: ${payload?.name || file.name}`, 'success');
+                }
+
+                resolve(payload || {});
+            });
+
+            request.addEventListener('error', () => {
+                const message = 'Erreur réseau pendant l’upload';
+                setUploadStatus(message, 'error');
+                reject(new Error(message));
+            });
+
+            request.addEventListener('abort', () => {
+                const message = 'Upload annulé';
+                setUploadStatus(message, 'error');
+                reject(new Error(message));
+            });
+
+            request.send(formData);
         });
+    };
 
-        let payload = null;
-        try {
-            payload = await response.json();
-        } catch {
-            payload = null;
+    const setUploadStatus = (message, type) => {
+        if (!uploadStatusNode) {
+            return;
         }
 
-        if (!response.ok) {
-            const message = payload?.error || payload?.warning || `Upload failed (${response.status})`;
-            throw new Error(message);
+        uploadStatusNode.textContent = message;
+        uploadStatusNode.className = 'dev-mode-status is-visible';
+        if (type) {
+            uploadStatusNode.classList.add(`is-${type}`);
         }
-
-        return payload || {};
     };
 
     const isMediaField = (field) => field.label.includes('Image / GIF') || field.label.includes('Bloc vidéo') || field.label.includes('Galerie');
@@ -362,6 +423,11 @@
         panel.className = 'dev-mode-panel';
         panel.innerHTML = '<h3>Mode dev</h3><div class="meta">Appuie sur D pour ouvrir/fermer. Les modifications sont sauvegardées localement.</div>';
 
+        uploadStatusNode = document.createElement('div');
+        uploadStatusNode.className = 'dev-mode-status';
+        uploadStatusNode.setAttribute('aria-live', 'polite');
+        panel.appendChild(uploadStatusNode);
+
         const fields = selectorsByPage();
         const state = getState();
 
@@ -401,11 +467,13 @@
                 chooser.style.marginTop = '8px';
                 chooser.addEventListener('click', async () => {
                     try {
+                        setUploadStatus(`Préparation de ${field.label}...`, 'loading');
                         await pickFileForField(field, element);
                         buildPanel();
                     } catch (error) {
                         console.error(error);
-                        alert('Impossible de choisir ce fichier. Vérifie que le navigateur autorise le sélecteur de fichiers.');
+                        setUploadStatus(error.message || 'Impossible de choisir ce fichier.', 'error');
+                        alert(error.message || 'Impossible de choisir ce fichier. Vérifie que le navigateur autorise le sélecteur de fichiers.');
                     }
                 });
                 wrapper.appendChild(chooser);
@@ -473,10 +541,12 @@
                     return;
                 }
                 try {
+                    setUploadStatus(`Préparation de ${matchingField.label}...`, 'loading');
                     await pickFileForField(matchingField, document.querySelector(matchingField.selector));
                     buildPanel();
                 } catch (error) {
                     console.error(error);
+                    setUploadStatus(error.message || 'Impossible d’uploader ce fichier.', 'error');
                 }
             });
         });
