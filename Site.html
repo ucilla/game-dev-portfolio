@@ -1,273 +1,281 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Développeur Jeu Vidéo</title>
-    <script src="assets/page-loader.js"></script>
-    <script defer src="assets/portfolio-shell.js"></script>
-    <style>
-        /* --- DESIGN ET COULEURS --- */
-        :root {
-            --bg-color: #0f172a; /* Bleu très foncé, presque noir */
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-color: #38bdf8; /* Bleu clair gaming */
-            --unity-color: #22c55e;
-            --sfml-color: #f59e0b;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Dev Museum</title>
+  <script src="assets/page-loader.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/phaser@3.80.1/dist/phaser.min.js"></script>
+  <script defer src="assets/museum.js"></script>
+  <style>
+    :root {
+      --bg: #050816;
+      --panel: rgba(2, 6, 23, 0.82);
+      --panel-strong: rgba(15, 23, 42, 0.94);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 30%),
+        linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+    }
 
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(to bottom, #020617, var(--bg-color));
-            border-bottom: 2px solid var(--accent-color);
-        }
+    body {
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+    }
 
-        h1 { margin: 0; font-size: 2.5em; color: var(--accent-color); }
-        h2 { margin: 10px 0 20px 0; font-size: 1.2em; color: var(--text-muted); font-weight: normal; }
+    #museum-app {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
 
-        .links a {
-            color: var(--text-main);
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 8px 16px;
-            border: 1px solid var(--accent-color);
-            border-radius: 5px;
-            transition: 0.3s;
-        }
+    #museum-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
 
-        .links a:hover { background-color: var(--accent-color); color: #000; }
+    .hud {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 18px;
+      box-sizing: border-box;
+      z-index: 5;
+    }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
-        .section-title { text-align: center; font-size: 2em; margin-bottom: 40px; }
+    .hud-top,
+    .hud-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
 
-        /* --- GRILLE DES PROJETS --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
+    .hud-panel {
+      pointer-events: auto;
+      background: var(--panel);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 16px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.32);
+      backdrop-filter: blur(10px);
+    }
 
-        .card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
+    .title-panel {
+      padding: 16px 18px;
+      max-width: min(520px, calc(100vw - 36px));
+    }
 
-        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 15px rgba(56, 189, 248, 0.2); }
+    .title-panel h1 {
+      margin: 0;
+      font-size: clamp(1.7rem, 4vw, 3.2rem);
+      line-height: 0.95;
+      color: var(--accent);
+      text-shadow: 0 0 24px rgba(56, 189, 248, 0.28);
+    }
 
-        .card-link {
-            color: inherit;
-            text-decoration: none;
-            display: block;
-        }
+    .title-panel p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
 
-        /* Zone pour tes GIFs/Images */
-        .card-img-placeholder {
-            width: 100%;
-            height: 200px;
-            background-color: #334155;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-style: italic;
-            /* Une fois que tu as des images, remplace le div par : <img src="ton-image.gif" style="width:100%; height:200px; object-fit:cover;"> */
-        }
+    .control-panel,
+    .log-panel,
+    .asset-panel,
+    .project-panel {
+      padding: 14px 16px;
+      max-width: min(420px, calc(100vw - 36px));
+    }
 
-        .card-content { padding: 20px; }
-        .card-title { margin: 0 0 10px 0; font-size: 1.4em; }
-        
-        .tags { margin-bottom: 15px; }
-        .tag { 
-            font-size: 0.8em; padding: 3px 8px; border-radius: 4px; margin-right: 5px; font-weight: bold;
-        }
-        .tag-unity { background-color: var(--unity-color); color: #000; }
-        .tag-sfml { background-color: var(--sfml-color); color: #000; }
-        .tag-team { background-color: #475569; color: #fff; }
+    .control-panel h2,
+    .log-panel h2,
+    .asset-panel h2,
+    .project-panel h2 {
+      margin: 0 0 10px;
+      font-size: 0.9rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
 
-        .card-description h4 { margin: 0 0 10px 0; color: var(--accent-color); font-size: 1em; }
-        .card-description ul { margin: 0 0 20px 0; padding-left: 20px; color: var(--text-muted); font-size: 0.9em; }
+    .control-panel ul,
+    .log-panel ul,
+    .asset-panel ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
 
-        .btn-download {
-            display: block;
-            text-align: center;
-            background-color: var(--accent-color);
-            color: #000;
-            text-decoration: none;
-            padding: 10px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.2s;
-        }
-        .btn-download:hover { background-color: #0ea5e9; color: #fff; }
+    .project-card {
+      display: grid;
+      grid-template-columns: 88px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-width: min(520px, calc(100vw - 36px));
+    }
 
-        footer { text-align: center; padding: 20px; color: var(--text-muted); margin-top: 50px; font-size: 0.9em; }
-    </style>
+    .project-thumb {
+      width: 88px;
+      height: 88px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.75rem;
+      text-align: center;
+    }
+
+    .project-thumb img,
+    .project-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-meta h3 {
+      margin: 0 0 6px;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .project-meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .button {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(56, 189, 248, 0.32);
+      background: rgba(2, 6, 23, 0.84);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      background: linear-gradient(180deg, #38bdf8, #0ea5e9);
+      color: #001018;
+      border-color: transparent;
+    }
+
+    .empty-state {
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.45;
+    }
+
+    .mini-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.76rem;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      color: #e0f2fe;
+    }
+
+    @media (max-width: 760px) {
+      .hud { padding: 10px; }
+      .title-panel,
+      .control-panel,
+      .log-panel,
+      .asset-panel,
+      .project-panel { max-width: calc(100vw - 20px); }
+      .project-card { grid-template-columns: 1fr; }
+      .project-thumb { width: 100%; height: 140px; }
+    }
+  </style>
 </head>
 <body>
+  <div id="museum-app">
+    <div id="museum-canvas"></div>
+  </div>
 
-    <header>
-        <h1>[Ton Prénom] [Ton Nom]</h1>
-        <h2>Développeur Jeu Vidéo (Gameplay & Outils)</h2>
-        <div class="links">
-            <a href="[LIEN_LINKEDIN]" target="_blank">Mon LinkedIn</a>
-            <a href="[LIEN_GITHUB]" target="_blank">Mon GitHub</a>
-            <a href="[LIEN_CV_PDF]" target="_blank">Télécharger mon CV</a>
-        </div>
-    </header>
+  <div class="hud">
+    <div class="hud-top">
+      <section class="hud-panel title-panel">
+        <h1>Game Dev Museum</h1>
+        <p>Déplace-toi avec <strong>WASD</strong> ou les flèches. Va devant un tableau et appuie sur <strong>E</strong> pour ouvrir le projet. Le contenu du musée est piloté par <code>assets/museum-data.json</code>.</p>
+      </section>
 
-    <div class="container">
-        <h3 class="section-title">Mes Projets</h3>
-        <div class="projects-grid">
-
-            <!-- PROJET 1 : GameJam Unity -->
-            <a class="card card-link" href="pages/projet1.html">
-                <div class="card-img-placeholder">[Mettre ici le GIF de ton jeu Game Jam]</div>
-                <div class="card-content">
-                    <h3 class="card-title">[Nom du jeu Game Jam]</h3>
-                    <div class="tags">
-                        <span class="tag tag-unity">Unity / C#</span>
-                        <span class="tag tag-team">Game Jam (Duo)</span>
-                    </div>
-                    <div class="card-description">
-                        <h4>Ce que j'ai développé :</h4>
-                        <ul>
-                            <li>Contrôleur du joueur et physiques de base.</li>
-                            <li>Implémentation du système de [mécanique clé, ex: tir/saut].</li>
-                            <li>Gestion de l'UI (Menu, Score, Game Over).</li>
-                        </ul>
-                    </div>
-                    <div class="btn-download">Voir les détails</div>
-                </div>
-            </a>
-
-            <!-- PROJET 2 : Projet 3D Unity -->
-            <a class="card card-link" href="pages/projet2.html">
-                <div class="card-img-placeholder">[Mettre ici un Screenshot 3D]</div>
-                <div class="card-content">
-                    <h3 class="card-title">[Nom Projet 3D]</h3>
-                    <div class="tags">
-                        <span class="tag tag-unity">Unity 3D / C#</span>
-                        <span class="tag tag-team">Équipe de 7 prog</span>
-                    </div>
-                    <div class="card-description">
-                        <h4>Ce que j'ai développé :</h4>
-                        <ul>
-                            <li>Architecture de l'IA des ennemis via State Machine.</li>
-                            <li>Travail collaboratif via Git (gestion des merges).</li>
-                            <li>[Autre mécanique spécifique que tu as codée].</li>
-                        </ul>
-                    </div>
-                    <div class="btn-download">Voir les détails</div>
-                </div>
-            </a>
-
-            <!-- PROJET 3 : Projet Mobile Unity -->
-            <a class="card card-link" href="pages/projet3.html">
-                <div class="card-img-placeholder">[Mettre ici un GIF format vertical/mobile]</div>
-                <div class="card-content">
-                    <h3 class="card-title">[Nom Projet Mobile 2D]</h3>
-                    <div class="tags">
-                        <span class="tag tag-unity">Unity Mobile</span>
-                        <span class="tag tag-team">Équipe de 7 prog</span>
-                    </div>
-                    <div class="card-description">
-                        <h4>Ce que j'ai développé :</h4>
-                        <ul>
-                            <li>Intégration des contrôles tactiles (Touch inputs).</li>
-                            <li>Optimisation des performances pour Android.</li>
-                            <li>Sauvegarde des données du joueur.</li>
-                        </ul>
-                    </div>
-                    <div class="btn-download">Voir les détails</div>
-                </div>
-            </a>
-
-            <!-- PROJET 4 : Multi Unity -->
-            <a class="card card-link" href="pages/projet4.html">
-                <div class="card-img-placeholder">[Mettre ici Screenshot Multijoueur]</div>
-                <div class="card-content">
-                    <h3 class="card-title">[Nom Projet Multijoueur]</h3>
-                    <div class="tags">
-                        <span class="tag tag-unity">Unity / Réseau</span>
-                        <span class="tag tag-team">Projet Duo</span>
-                    </div>
-                    <div class="card-description">
-                        <h4>Ce que j'ai développé :</h4>
-                        <ul>
-                            <li>Mise en place de l'architecture réseau (Photon/Mirror/Netcode ?).</li>
-                            <li>Synchronisation des mouvements des joueurs.</li>
-                            <li>Gestion des collisions et des scores en réseau.</li>
-                        </ul>
-                    </div>
-                    <div class="btn-download">Voir les détails</div>
-                </div>
-            </a>
-
-            <!-- PROJET 5 : SFML -->
-            <a class="card card-link" href="pages/projet5.html">
-                <div class="card-img-placeholder">[Mettre ici Screenshot SFML]</div>
-                <div class="card-content">
-                    <h3 class="card-title">[Nom Projet SFML]</h3>
-                    <div class="tags">
-                        <span class="tag tag-sfml">C++ / SFML</span>
-                        <span class="tag tag-team">Équipe de 7 prog</span>
-                    </div>
-                    <div class="card-description">
-                        <h4>Ce que j'ai développé :</h4>
-                        <ul>
-                            <li>Création de la boucle de jeu depuis zéro (Game Loop).</li>
-                            <li>Gestion de la mémoire et des pointeurs en C++.</li>
-                            <li>Système de collision 2D personnalisé (AABB).</li>
-                        </ul>
-                    </div>
-                    <div class="btn-download">Voir les détails</div>
-                </div>
-            </a>
-
-            <!-- PROJET 6 : CSFML -->
-            <a class="card card-link" href="pages/projet6.html">
-                <div class="card-img-placeholder">[Mettre ici Screenshot CSFML]</div>
-                <div class="card-content">
-                    <h3 class="card-title">[Nom Projet CSFML]</h3>
-                    <div class="tags">
-                        <span class="tag tag-sfml">C / CSFML</span>
-                        <span class="tag tag-team">Équipe de 7 prog</span>
-                    </div>
-                    <div class="card-description">
-                        <h4>Ce que j'ai développé :</h4>
-                        <ul>
-                            <li>Programmation bas niveau de l'affichage graphique.</li>
-                            <li>Structure des données en langage C (Structs, Malloc).</li>
-                            <li>[Ta mission précise dans le groupe].</li>
-                        </ul>
-                    </div>
-                    <div class="btn-download">Voir les détails</div>
-                </div>
-            </a>
-
-        </div>
+      <section class="hud-panel control-panel">
+        <h2>Controls</h2>
+        <ul>
+          <li>WASD / flèches: se déplacer</li>
+          <li>E: ouvrir le projet du tableau</li>
+          <li>Shift: marcher plus vite</li>
+          <li>Esc: fermer le panneau projet</li>
+        </ul>
+      </section>
     </div>
 
-    <footer>
-        <p>Portfolio créé par Andrea CATANESE - 2026</p>
-    </footer>
+    <div class="hud-bottom">
+      <section class="hud-panel log-panel">
+        <h2>Console</h2>
+        <ul id="museum-log"></ul>
+      </section>
 
-    <script src="assets/dev-mode.js"></script>
-
+      <section class="hud-panel asset-panel">
+        <h2>Assets faciles</h2>
+        <div class="empty-state">Ajoute un média dans <code>assets/</code>, puis référence-le dans <code>assets/museum-data.json</code> sans toucher au code Phaser.</div>
+        <div class="mini-tags">
+          <span class="tag">Image</span>
+          <span class="tag">GIF</span>
+          <span class="tag">Video</span>
+          <span class="tag">Sprite sheet</span>
+        </div>
+      </section>
+    </div>
+  </div>
 </body>
 </html>
+*** End Patch

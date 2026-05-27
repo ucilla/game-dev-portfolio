@@ -1,0 +1,112 @@
+{
+  "player": {
+    "spawn": { "x": 180, "y": 420 },
+    "speed": 220
+  },
+  "museum": {
+    "floorColor": 11507968,
+    "wallColor": 2730482,
+    "accentColor": 3752651
+  },
+  "projects": [
+    {
+      "id": "1",
+      "title": "Escape Moscow",
+      "shortTitle": "Escape Moscow",
+      "page": "pages/projet1.html",
+      "x": 230,
+      "y": 320,
+      "w": 170,
+      "h": 120,
+      "frameColor": 3802933,
+      "subtitle": "Game Jam / Unity",
+      "assetType": "image",
+      "asset": "assets/Escape Moscow/image.png",
+      "label": "Press E to open"
+    },
+    {
+      "id": "2",
+      "title": "Projet 3D",
+      "shortTitle": "Projet 3D",
+      "page": "pages/projet2.html",
+      "x": 570,
+      "y": 320,
+      "w": 170,
+      "h": 120,
+      "frameColor": 14931548,
+      "subtitle": "Unity 3D / IA",
+      "assetType": "image",
+      "asset": "assets/Escape Moscow/image.png",
+      "label": "Press E to open"
+    },
+    {
+      "id": "3",
+      "title": "Projet Mobile",
+      "shortTitle": "Projet Mobile",
+      "page": "pages/projet3.html",
+      "x": 910,
+      "y": 320,
+      "w": 170,
+      "h": 120,
+      "frameColor": 4580931,
+      "subtitle": "Unity Mobile",
+      "assetType": "image",
+      "asset": "assets/Escape Moscow/image.png",
+      "label": "Press E to open"
+    },
+    {
+      "id": "4",
+      "title": "Multijoueur",
+      "shortTitle": "Multijoueur",
+      "page": "pages/projet4.html",
+      "x": 230,
+      "y": 560,
+      "w": 170,
+      "h": 120,
+      "frameColor": 8267295,
+      "subtitle": "Unity / Réseau",
+      "assetType": "image",
+      "asset": "assets/Escape Moscow/image.png",
+      "label": "Press E to open"
+    },
+    {
+      "id": "5",
+      "title": "SFML",
+      "shortTitle": "SFML",
+      "page": "pages/projet5.html",
+      "x": 570,
+      "y": 560,
+      "w": 170,
+      "h": 120,
+      "frameColor": 15914725,
+      "subtitle": "C++ / SFML",
+      "assetType": "video",
+      "asset": "assets/Heaven's Doom/Trailer.mp4",
+      "label": "Press E to open"
+    },
+    {
+      "id": "6",
+      "title": "CSFML",
+      "shortTitle": "CSFML",
+      "page": "pages/projet6.html",
+      "x": 910,
+      "y": 560,
+      "w": 170,
+      "h": 120,
+      "frameColor": 14060340,
+      "subtitle": "C / CSFML",
+      "assetType": "image",
+      "asset": "assets/Escape Moscow/image.png",
+      "label": "Press E to open"
+    }
+  ],
+  "decor": [
+    { "type": "statue", "x": 90, "y": 470, "w": 50, "h": 110, "title": "Unity", "color": 3752651 },
+    { "type": "statue", "x": 1260, "y": 470, "w": 50, "h": 110, "title": "C#", "color": 8267295 }
+  ],
+  "logs": [
+    "Museum boot sequence loaded.",
+    "WASD / arrows to move, E to inspect exhibits.",
+    "Drop new assets in assets/ and edit museum-data.json."
+  ]
+}
