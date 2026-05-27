@@ -851,8 +851,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     const drawMatrix = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      const fontSize = 20;
-      const columnCount = Math.max(1, Math.floor(width / fontSize));
+      const fontSize = 18;
+      const columnGap = 24;
+      const columnCount = Math.max(1, Math.floor(width / columnGap));
 
       if (columns.length !== columnCount) {
         columns.length = 0;
@@ -861,23 +862,23 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
         }
       }
 
-      context.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      context.fillStyle = 'rgba(0, 0, 0, 0.1)';
       context.fillRect(0, 0, width, height);
       context.font = `${fontSize}px Consolas, monospace`;
 
       for (let index = 0; index < columns.length; index += 1) {
         const char = Math.random() > 0.5 ? '1' : '0';
-        const x = index * fontSize;
-        const y = columns[index] * fontSize;
-        const isBright = Math.random() > 0.965;
+        const x = index * columnGap;
+        const y = columns[index] * columnGap;
+        const isBright = Math.random() > 0.97;
 
         context.fillStyle = isBright ? '#ffffff' : 'rgba(107, 255, 149, 0.9)';
         context.fillText(char, x, y);
 
-        if (y > height && Math.random() > 0.99) {
+        if (y > height && Math.random() > 0.985) {
           columns[index] = 0;
         } else {
-          columns[index] += 0.35 + Math.random() * 0.18;
+          columns[index] += 0.7 + Math.random() * 0.35;
         }
       }
 
