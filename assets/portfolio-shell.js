@@ -94,6 +94,248 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
   const isProjectPage = Boolean(document.querySelector('.video-container') || document.querySelector('.media'));
 
   const css = `
+    .shell-home body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .shell-home body > header,
+    .shell-home body > .container {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .shell-home #matrix-home-app {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .matrix-home-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #000;
+    }
+
+    .matrix-home-glow {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, rgba(0, 255, 102, 0.12), transparent 42%),
+        radial-gradient(circle at center, rgba(0, 200, 80, 0.08), transparent 62%);
+      pointer-events: none;
+      mix-blend-mode: screen;
+    }
+
+    .matrix-home-vignette {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at center, transparent 0%, transparent 58%, rgba(0, 0, 0, 0.28) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.68));
+    }
+
+    .matrix-home-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 2;
+    }
+
+    .matrix-console {
+      width: min(920px, calc(100vw - 24px));
+      min-height: min(72vh, 640px);
+      border: 1px solid rgba(0, 255, 102, 0.35);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(0, 10, 0, 0.9), rgba(0, 14, 0, 0.78));
+      box-shadow:
+        0 0 0 1px rgba(0, 255, 102, 0.08),
+        0 0 44px rgba(0, 255, 102, 0.16),
+        0 24px 90px rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .matrix-console::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 100% 3px;
+      opacity: 0.16;
+      mix-blend-mode: screen;
+    }
+
+    .matrix-console-header,
+    .matrix-console-footer,
+    .matrix-console-body {
+      position: relative;
+      z-index: 1;
+    }
+
+    .matrix-console-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid rgba(0, 255, 102, 0.16);
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    .matrix-console-title {
+      margin: 0;
+      color: #d9ffe3;
+      font-size: 1rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+    }
+
+    .matrix-console-status {
+      color: #6bff95;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: right;
+    }
+
+    .matrix-console-body {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 18px 20px;
+      min-height: 0;
+    }
+
+    .matrix-screen,
+    .matrix-side {
+      border: 1px solid rgba(0, 255, 102, 0.18);
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      min-height: 0;
+    }
+
+    .matrix-screen {
+      display: grid;
+      grid-template-rows: 1fr auto;
+      overflow: hidden;
+    }
+
+    .matrix-output {
+      margin: 0;
+      padding: 16px;
+      overflow: auto;
+      color: #d7ffe0;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .matrix-line {
+      margin: 0 0 6px;
+    }
+
+    .matrix-line.muted {
+      color: #7fd89a;
+    }
+
+    .matrix-line.accent {
+      color: #6bff95;
+    }
+
+    .matrix-input-row {
+      display: flex;
+      gap: 10px;
+      padding: 14px 16px 16px;
+      border-top: 1px solid rgba(0, 255, 102, 0.14);
+      align-items: center;
+      font-family: 'Consolas', 'Courier New', monospace;
+    }
+
+    .matrix-prompt {
+      color: #6bff95;
+      flex: 0 0 auto;
+    }
+
+    .matrix-input {
+      flex: 1;
+      border: 0;
+      outline: none;
+      background: transparent;
+      color: #f3fff6;
+      font: inherit;
+      min-width: 0;
+    }
+
+    .matrix-cursor {
+      width: 10px;
+      height: 18px;
+      background: #6bff95;
+      animation: matrixBlink 1s steps(1) infinite;
+      flex: 0 0 auto;
+    }
+
+    .matrix-panel {
+      border: 1px solid rgba(0, 255, 102, 0.12);
+      border-radius: 12px;
+      padding: 14px;
+      background: rgba(0, 0, 0, 0.32);
+    }
+
+    .matrix-panel h2 {
+      margin: 0 0 10px;
+      color: #6bff95;
+      font-size: 0.86rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .matrix-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      color: #d7ffe0;
+      font-size: 0.88rem;
+    }
+
+    .matrix-list a {
+      color: #8affab;
+      text-decoration: none;
+    }
+
+    .matrix-list a:hover {
+      text-decoration: underline;
+    }
+
+    .matrix-console-footer {
+      padding: 0 20px 18px;
+      color: #7fd89a;
+      font-family: 'Consolas', 'Courier New', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+    }
+
+    @keyframes matrixBlink {
+      50% { opacity: 0; }
+    }
+
     .shell-enhanced body {
       background:
         radial-gradient(circle at top, rgba(56, 189, 248, 0.14), transparent 30%),
@@ -412,145 +654,121 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
     container.scrollTop = container.scrollHeight;
   };
 
+  const renderTextLines = (container, lines, className = '') => {
+    container.innerHTML = '';
+    lines.forEach((line) => {
+      const entry = document.createElement('div');
+      entry.className = `matrix-line${className ? ` ${className}` : ''}`;
+      entry.textContent = line;
+      container.appendChild(entry);
+    });
+    container.scrollTop = container.scrollHeight;
+  };
+
   const buildHome = () => {
-    const container = document.querySelector('.container');
-    if (!container || document.getElementById('portfolio-command-center')) {
+    if (document.getElementById('matrix-home-app')) {
       return;
     }
 
-    const header = document.querySelector('body > header');
-    if (header) {
-      const title = header.querySelector('h1');
-      const subtitle = header.querySelector('h2');
-      if (title) {
-        title.textContent = 'Game Dev Terminal';
-      }
-      if (subtitle) {
-        subtitle.textContent = 'Interactive coding portfolio // type help to launch the hub';
-      }
-    }
+    document.documentElement.classList.add('shell-home');
 
-    const panel = document.createElement('section');
-    panel.id = 'portfolio-command-center';
-    panel.className = 'shell-panel';
-    panel.innerHTML = `
-      <div class="shell-top">
-        <div class="shell-terminal">
-          <div class="shell-label">Portfolio Runtime</div>
-          <h2 class="shell-title">> <span>Game Dev</span> Control Node</h2>
-          <p class="shell-subtitle">Tape des commandes pour explorer le portfolio comme un mini jeu de navigation. Help, projects, skills et play sont disponibles.</p>
-          <div class="shell-chips" id="portfolio-quick-chips"></div>
-          <div class="shell-output" id="portfolio-terminal-output" aria-live="polite"></div>
-          <div class="shell-input-row">
-            <span class="shell-prompt">guest@portfolio:~$</span>
-            <input class="shell-input" id="portfolio-command-input" autocomplete="off" placeholder="help, about, projects, skills, play 1" />
-            <button class="shell-submit" id="portfolio-command-submit" type="button">Run</button>
+    const app = document.createElement('section');
+    app.id = 'matrix-home-app';
+    app.innerHTML = `
+      <canvas class="matrix-home-canvas" id="matrix-home-canvas" aria-hidden="true"></canvas>
+      <div class="matrix-home-glow" aria-hidden="true"></div>
+      <div class="matrix-home-vignette" aria-hidden="true"></div>
+      <div class="matrix-home-center">
+        <section class="matrix-console" aria-label="Console du portfolio">
+          <div class="matrix-console-header">
+            <h1 class="matrix-console-title">Portfolio Matrix</h1>
+            <div class="matrix-console-status">Online // Type help</div>
           </div>
-        </div>
-        <aside class="shell-tree">
-          <div class="tree-branch">
-            <h3>Skill Tree</h3>
-            ${skillNodes.map((node) => `
-              <div class="tree-item">
-                <span><strong>${node.label}</strong><em>${node.level}%</em></span>
-                <div class="tree-bar"><i style="width:${node.level}%"></i></div>
+          <div class="matrix-console-body">
+            <div class="matrix-screen">
+              <div class="matrix-output" id="matrix-output" aria-live="polite"></div>
+              <div class="matrix-input-row">
+                <span class="matrix-prompt">C:\\portfolio&gt;</span>
+                <input class="matrix-input" id="matrix-input" autocomplete="off" spellcheck="false" placeholder="help" />
+                <span class="matrix-cursor" aria-hidden="true"></span>
               </div>
-            `).join('')}
+            </div>
           </div>
-          <div class="tree-branch">
-            <h3>Daily Quests</h3>
-            <div class="console-lines" id="portfolio-quest-list"></div>
-          </div>
-        </aside>
-      </div>
-      <div class="shell-grid" id="portfolio-command-grid"></div>
-      <div class="shell-console">
-        <div class="shell-label">Live Console</div>
-        <div class="console-lines" id="portfolio-live-log"></div>
+          <div class="matrix-console-footer">Minimal shell interface // green mode // keyboard first</div>
+        </section>
       </div>
     `;
 
-    container.parentNode.insertBefore(panel, container);
-    container.style.display = 'none';
+    document.body.insertBefore(app, document.body.firstChild);
 
-    const output = panel.querySelector('#portfolio-terminal-output');
-    const log = panel.querySelector('#portfolio-live-log');
-    const questList = panel.querySelector('#portfolio-quest-list');
-    const input = panel.querySelector('#portfolio-command-input');
-    const submit = panel.querySelector('#portfolio-command-submit');
-    const quickChips = panel.querySelector('#portfolio-quick-chips');
-    const grid = panel.querySelector('#portfolio-command-grid');
+    const output = app.querySelector('#matrix-output');
+    const input = app.querySelector('#matrix-input');
+    const canvas = app.querySelector('#matrix-home-canvas');
+    const context = canvas.getContext('2d');
 
-    const write = (text) => appendConsoleLine(output, text);
-    const logLine = (text) => appendConsoleLine(log, text);
+    const write = (text, className = '') => {
+      const line = document.createElement('div');
+      line.className = `matrix-line${className ? ` ${className}` : ''}`;
+      line.textContent = text;
+      output.appendChild(line);
+      output.scrollTop = output.scrollHeight;
+    };
+
+    const getSocialEntries = () => {
+      const headerLinks = Array.from(document.querySelectorAll('header .links a')).map((link) => ({
+        label: link.textContent.trim(),
+        href: link.getAttribute('href') || '#'
+      }));
+
+      if (headerLinks.length) {
+        return headerLinks;
+      }
+
+      return [
+        { label: 'GitHub', href: 'https://github.com/' },
+        { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
+        { label: 'Email', href: 'mailto:you@example.com' }
+      ];
+    };
+
+    const renderProjectList = () => {
+      write('Projects available:');
+      projects.forEach((project) => {
+        write(`${project.id}. ${project.title} — ${project.summary}`, 'muted');
+      });
+      write('Use open <id> to launch a project.', 'accent');
+    };
+
+    const renderSocialList = () => {
+      write('Social links:');
+      getSocialEntries().forEach((entry) => {
+        const item = document.createElement('div');
+        item.className = 'matrix-line muted';
+        item.innerHTML = `${entry.label} — <a href="${entry.href}" target="_blank" rel="noreferrer">${entry.href}</a>`;
+        output.appendChild(item);
+      });
+      output.scrollTop = output.scrollHeight;
+    };
 
     const commands = {
-      help: () => [
-        'help - afficher les commandes',
-        'about - présenter le portfolio',
-        'projects - lister les projets',
-        'skills - afficher les compétences',
-        'play <id|nom> - ouvrir un projet',
-        'clear - nettoyer la console'
-      ],
-      about: () => [
-        'Portfolio construit comme un cockpit de dev-game.',
-        'Navigation pensée comme une expérience interactive.'
-      ],
-      projects: () => projects.map((project) => `${project.id}. ${project.title} // ${project.summary}`),
-      skills: () => skillNodes.map((node) => `${node.label}: ${node.level}%`),
-      clear: () => []
-    };
-
-    const showProjects = () => {
-      grid.innerHTML = projects.map((project) => `
-        <article class="shell-card" data-project-id="${project.id}">
-          <h3>${project.title}</h3>
-          <p>${project.summary}</p>
-          <div class="meta">
-            <span class="shell-tag">${project.skill}</span>
-            <span class="shell-tag">Mission ${project.id}</span>
-          </div>
-          <div class="shell-cta">
-            <button class="shell-button primary" data-project-open="${project.id}">Play</button>
-            <a class="shell-button" href="${project.path}">Open dossier</a>
-          </div>
-        </article>
-      `).join('');
-
-      grid.querySelectorAll('[data-project-open]').forEach((button) => {
-        button.addEventListener('click', () => {
-          const project = projects.find((item) => item.id === button.getAttribute('data-project-open'));
-          if (project) {
-            logLine(`Launching ${project.title}...`);
-            window.location.href = project.path;
-          }
-        });
-      });
-    };
-
-    const renderQuests = () => {
-      questList.innerHTML = [
-        'Launch a project',
-        'Read a code snippet',
-        'Open the skill tree',
-        'Try a command: help'
-      ].map((quest) => `<div>${quest}</div>`).join('');
-    };
-
-    const renderQuickChips = () => {
-      const quickActions = [
-        ['Help', 'help'],
-        ['Projects', 'projects'],
-        ['Skills', 'skills'],
-        ['Play 1', 'play 1'],
-        ['Play 2', 'play 2'],
-        ['About', 'about']
-      ];
-      quickChips.innerHTML = quickActions.map(([label, command]) => `<button type="button" class="shell-chip" data-command="${command}">${label}</button>`).join('');
-      quickChips.querySelectorAll('[data-command]').forEach((chip) => {
-        chip.addEventListener('click', () => runCommand(chip.getAttribute('data-command') || 'help'));
-      });
+      help: () => {
+        write('help');
+        write('  help   : affiche la liste des commandes', 'muted');
+        write('  project: affiche la liste des projets', 'muted');
+        write('  social : affiche les reseaux', 'muted');
+        write('  open X : ouvre le projet X', 'muted');
+        write('  clear  : nettoie la console', 'muted');
+      },
+      project: () => renderProjectList(),
+      social: () => renderSocialList(),
+      clear: () => {
+        output.innerHTML = '';
+        write('Console cleared.', 'accent');
+      },
+      cls: () => {
+        output.innerHTML = '';
+        write('Console cleared.', 'accent');
+      }
     };
 
     const runCommand = (raw) => {
@@ -559,98 +777,98 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
         return;
       }
 
-      write(`guest@portfolio:~$ ${command}`);
+      write(`C:\\portfolio> ${command}`, 'accent');
 
       const [action, ...rest] = command.toLowerCase().split(/\s+/);
-      if (action === 'clear') {
-        output.innerHTML = '';
-        write('Console cleared.');
-        return;
-      }
 
-      if (action === 'play') {
-        const query = rest.join(' ');
-        const project = projects.find((item) => item.aliases.some((alias) => alias === query || item.title.toLowerCase().includes(query) || query.includes(alias)));
+      if (action === 'open') {
+        const target = rest.join(' ');
+        const project = projects.find((item) => item.id === target || item.title.toLowerCase().includes(target) || item.aliases.some((alias) => alias === target));
         if (project) {
-          logLine(`Mission ${project.id} selected: ${project.title}`);
           window.location.href = project.path;
           return;
         }
 
-        write('Unknown project. Try: play 1, play 2, play 3...');
+        write('Projet introuvable. Essaie open 1, open 2, open 3...', 'muted');
         return;
       }
 
-      if (commands[action]) {
-        const lines = commands[action]();
-        if (!lines.length) {
-          write('');
-        } else {
-          lines.forEach(write);
-        }
-        if (action === 'projects') {
-          showProjects();
-        }
-        if (action === 'skills') {
-          window.scrollTo({ top: panel.offsetTop, behavior: 'smooth' });
-        }
+      const commandHandler = commands[action];
+      if (commandHandler) {
+        commandHandler();
         return;
       }
 
-      const matched = projects.find((item) => item.aliases.some((alias) => command.includes(alias)));
-      if (matched) {
-        logLine(`Opening ${matched.title}...`);
-        window.location.href = matched.path;
-        return;
-      }
-
-      write(`Unknown command: ${command}`);
-      write('Type help to see available actions.');
+      write(`Commande inconnue: ${command}`, 'muted');
+      write('Tape help pour voir les commandes disponibles.', 'muted');
     };
 
-    submit.addEventListener('click', () => {
-      runCommand(input.value);
-      input.value = '';
-      input.focus();
-    });
+    const resizeCanvas = () => {
+      const ratio = window.devicePixelRatio || 1;
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      canvas.width = Math.floor(width * ratio);
+      canvas.height = Math.floor(height * ratio);
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+      context.setTransform(ratio, 0, 0, ratio, 0, 0);
+    };
 
+    const columns = [];
+    const drawMatrix = () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const fontSize = 18;
+      const columnCount = Math.max(1, Math.floor(width / fontSize));
+
+      if (columns.length !== columnCount) {
+        columns.length = 0;
+        for (let index = 0; index < columnCount; index += 1) {
+          columns.push(Math.random() * height * 0.5);
+        }
+      }
+
+      context.fillStyle = 'rgba(0, 0, 0, 0.08)';
+      context.fillRect(0, 0, width, height);
+      context.font = `${fontSize}px Consolas, monospace`;
+
+      for (let index = 0; index < columns.length; index += 1) {
+        const char = Math.random() > 0.5 ? '1' : '0';
+        const x = index * fontSize;
+        const y = columns[index] * fontSize;
+        const isBright = Math.random() > 0.94;
+
+        context.fillStyle = isBright ? 'rgba(180, 255, 205, 0.96)' : 'rgba(0, 255, 120, 0.72)';
+        context.fillText(char, x, y);
+
+        if (y > height && Math.random() > 0.975) {
+          columns[index] = 0;
+        } else {
+          columns[index] += 0.9 + Math.random() * 0.7;
+        }
+      }
+
+      window.requestAnimationFrame(drawMatrix);
+    };
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+    drawMatrix();
+
+    write('Matrix console initialized.');
+    write('Tape help pour commencer.', 'muted');
+    write('Commandes: help, project, social, open <id>, clear', 'muted');
+
+    input.focus();
     input.addEventListener('keydown', (event) => {
       if (event.key === 'Enter') {
-        event.preventDefault();
-        runCommand(input.value);
+        const value = input.value;
         input.value = '';
+        runCommand(value);
       }
     });
 
-    renderQuickChips();
-    renderQuests();
-    showProjects();
-    logLine('Booting game-dev portfolio shell...');
-    logLine('Terminal online. Type help to start the run.');
-    write('System ready.');
-
-    const existingCards = document.querySelectorAll('.card');
-    existingCards.forEach((card, index) => {
-      const project = projects[index];
-      if (!project) return;
-      card.setAttribute('data-project-id', project.id);
-      const title = card.querySelector('.card-title');
-      const description = card.querySelector('.card-description');
-      if (title) {
-        const badge = document.createElement('span');
-        badge.className = 'shell-tag';
-        badge.textContent = `Mission ${project.id}`;
-        title.insertAdjacentElement('beforebegin', badge);
-      }
-      if (description) {
-        description.insertAdjacentElement('afterend', (() => {
-          const cta = document.createElement('div');
-          cta.className = 'shell-cta';
-          cta.innerHTML = `<a class="shell-button primary" href="${project.path}">Play mission</a><a class="shell-button" href="${project.path}">Open dossier</a>`;
-          return cta;
-        })());
-      }
-    });
+    app.addEventListener('click', () => input.focus());
   };
 
   const buildProjectPage = () => {
