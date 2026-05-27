@@ -188,11 +188,19 @@
             body: formData
         });
 
-        if (!response.ok) {
-            throw new Error('Upload failed');
+        let payload = null;
+        try {
+            payload = await response.json();
+        } catch {
+            payload = null;
         }
 
-        return response.json();
+        if (!response.ok) {
+            const message = payload?.error || payload?.warning || `Upload failed (${response.status})`;
+            throw new Error(message);
+        }
+
+        return payload || {};
     };
 
     const isMediaField = (field) => field.label.includes('Image / GIF') || field.label.includes('Bloc vidéo') || field.label.includes('Galerie');
@@ -234,7 +242,8 @@
                 updatedState[field.label] = JSON.stringify({
                     name: uploaded.name || file.name,
                     type: uploaded.type || file.type,
-                    url: uploaded.url
+                    url: uploaded.url,
+                    storage: uploaded.storage || 'remote'
                 });
                 await persistState(updatedState);
             } else {

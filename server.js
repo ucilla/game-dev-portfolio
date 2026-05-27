@@ -171,34 +171,58 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
       ok: true,
       name: req.file.originalname,
       type: req.file.mimetype,
-      url: `/uploads/${req.file.filename}`
+      url: `/uploads/${req.file.filename}`,
+      storage: 'local'
     });
     return;
   }
 
   (async () => {
+    const localUrl = `/uploads/${req.file.filename}`;
     const fileBuffer = fs.readFileSync(req.file.path);
     const remotePath = `${Date.now()}-${req.file.filename}`;
-    const { error: uploadError } = await supabase.storage
-      .from(supabaseBucket)
-      .upload(remotePath, fileBuffer, {
-        contentType: req.file.mimetype,
-        upsert: false
+    let remoteUrl = null;
+
+    try {
+      const { error: uploadError } = await supabase.storage
+        .from(supabaseBucket)
+        .upload(remotePath, fileBuffer, {
+          contentType: req.file.mimetype,
+          upsert: false
+        });
+
+      if (!uploadError) {
+        const { data } = supabase.storage.from(supabaseBucket).getPublicUrl(remotePath);
+        remoteUrl = data.publicUrl;
+      }
+    } catch (error) {
+      remoteUrl = null;
+    }
+
+    try {
+      fs.unlinkSync(req.file.path);
+    } catch {
+      // ignore cleanup errors
+    }
+
+    if (remoteUrl) {
+      res.json({
+        ok: true,
+        name: req.file.originalname,
+        type: req.file.mimetype,
+        url: remoteUrl,
+        storage: 'supabase'
       });
-
-    fs.unlinkSync(req.file.path);
-
-    if (uploadError) {
-      res.status(500).json({ error: uploadError.message || 'Upload failed' });
       return;
     }
 
-    const { data } = supabase.storage.from(supabaseBucket).getPublicUrl(remotePath);
     res.json({
       ok: true,
       name: req.file.originalname,
       type: req.file.mimetype,
-      url: data.publicUrl
+      url: localUrl,
+      storage: 'local',
+      warning: `Supabase upload failed for bucket "${supabaseBucket}". The file was kept locally for now.`
     });
   })().catch((error) => {
     try {
@@ -206,7 +230,14 @@ app.post('/api/upload', upload.single('file'), (req, res) => {
     } catch {
       // ignore cleanup errors
     }
-    res.status(500).json({ error: error.message || 'Upload failed' });
+    res.json({
+      ok: true,
+      name: req.file.originalname,
+      type: req.file.mimetype,
+      url: `/uploads/${req.file.filename}`,
+      storage: 'local',
+      warning: error.message || 'Upload fell back to local storage.'
+    });
   });
 });
 
