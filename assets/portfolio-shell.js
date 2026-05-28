@@ -854,8 +854,9 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       flipStartedAt: now - 1000
     });
 
-    const createColumnState = (height, rowGapY, trailLength, now, glyphSwitchDelayMs) => ({
+    const createColumnState = (height, rowGapY, trailLength, now, glyphSwitchDelayMs, minSpeed = 0.15, maxSpeed = 0.3) => ({
       position: Math.random() * (height / rowGapY),
+      speed: minSpeed + Math.random() * (maxSpeed - minSpeed),
       trail: Array.from({ length: trailLength }, () => createGlyph(now, glyphSwitchDelayMs))
     });
 
@@ -889,7 +890,7 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
         const x = index * columnGapX;
         const column = columns[index];
         const previousRow = Math.floor(column.position);
-        column.position += fallSpeed;
+        column.position += column.speed;
         const currentRow = Math.floor(column.position);
 
         if (currentRow > previousRow) {
