@@ -847,38 +847,100 @@ sfRenderWindow_drawSprite(window, sprite, NULL);`
       context.setTransform(ratio, 0, 0, ratio, 0, 0);
     };
 
+    const createGlyph = (now, glyphSwitchDelayMs) => ({
+      char: Math.random() > 0.5 ? '1' : '0',
+      previousChar: Math.random() > 0.5 ? '1' : '0',
+      nextFlipAt: now + glyphSwitchDelayMs,
+      flipStartedAt: now - 1000
+    });
+
+    const createColumnState = (height, rowGapY, trailLength, now, glyphSwitchDelayMs) => ({
+      position: Math.random() * (height / rowGapY),
+      trail: Array.from({ length: trailLength }, () => createGlyph(now, glyphSwitchDelayMs))
+    });
+
     const columns = [];
     const drawMatrix = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      const fontSize = 18;
-      const columnGap = 24;
-      const columnCount = Math.max(1, Math.floor(width / columnGap));
+      const fontSize = 30;
+      const columnGapX = 50;
+      const rowGapY = 30;
+      const fallSpeed = 0.15;
+      const trailLength = 20;
+      const columnRespawnOffsetRows = trailLength;
+      const glyphSwitchDelaySeconds = 10;
+      const glyphSwitchDelayMs = glyphSwitchDelaySeconds * 1000;
+      const glyphFadeDurationMs = 140;
+      const columnCount = Math.max(1, Math.floor(width / columnGapX));
+      const now = performance.now();
 
       if (columns.length !== columnCount) {
         columns.length = 0;
         for (let index = 0; index < columnCount; index += 1) {
-          columns.push(Math.random() * height * 0.5);
+          columns.push(createColumnState(height, rowGapY, trailLength, now, glyphSwitchDelayMs));
         }
       }
 
-      context.fillStyle = 'rgba(0, 0, 0, 0.1)';
-      context.fillRect(0, 0, width, height);
+      context.clearRect(0, 0, width, height);
       context.font = `${fontSize}px Consolas, monospace`;
 
       for (let index = 0; index < columns.length; index += 1) {
-        const char = Math.random() > 0.5 ? '1' : '0';
-        const x = index * columnGap;
-        const y = columns[index] * columnGap;
-        const isBright = Math.random() > 0.97;
+        const x = index * columnGapX;
+        const column = columns[index];
+        const previousRow = Math.floor(column.position);
+        column.position += fallSpeed;
+        const currentRow = Math.floor(column.position);
 
-        context.fillStyle = isBright ? '#ffffff' : 'rgba(107, 255, 149, 0.9)';
-        context.fillText(char, x, y);
+        if (currentRow > previousRow) {
+          for (let step = 0; step < currentRow - previousRow; step += 1) {
+            column.trail.unshift(createGlyph(now, glyphSwitchDelayMs));
+            column.trail.length = trailLength;
+          }
 
-        if (y > height && Math.random() > 0.985) {
-          columns[index] = 0;
-        } else {
-          columns[index] += 0.7 + Math.random() * 0.35;
+          if (column.position > (height / rowGapY) + columnRespawnOffsetRows) {
+            column.position = -columnRespawnOffsetRows;
+          }
+        }
+
+        column.trail.forEach((glyph) => {
+          if (now >= glyph.nextFlipAt) {
+            glyph.previousChar = glyph.char;
+            glyph.char = Math.random() > 0.5 ? '1' : '0';
+            glyph.flipStartedAt = now;
+            glyph.nextFlipAt = now + glyphSwitchDelayMs;
+          }
+        });
+
+        for (let trailIndex = 0; trailIndex < trailLength; trailIndex += 1) {
+          const y = (column.position - trailIndex) * rowGapY;
+
+          if (y < -rowGapY) {
+            break;
+          }
+
+          const glyph = column.trail[trailIndex];
+          const char = glyph ? glyph.char : (Math.random() > 0.5 ? '1' : '0');
+          const positionFactor = 1 - trailIndex / trailLength;
+          const transitionProgress = glyph
+            ? Math.min(1, (now - glyph.flipStartedAt) / glyphFadeDurationMs)
+            : 1;
+          const alpha = Math.max(0.08, positionFactor);
+
+          context.fillStyle = trailIndex === 0
+            ? `rgba(255, 255, 255, ${alpha})`
+            : `rgba(107, 255, 149, ${alpha})`;
+
+          if (glyph && transitionProgress < 1) {
+            const transitionAlpha = Math.max(0, 1 - transitionProgress);
+            context.globalAlpha = alpha * transitionAlpha;
+            context.fillText(glyph.previousChar, x, y);
+            context.globalAlpha = alpha * transitionProgress;
+            context.fillText(char, x, y);
+            context.globalAlpha = 1;
+          } else {
+            context.fillText(char, x, y);
+          }
         }
       }
 
