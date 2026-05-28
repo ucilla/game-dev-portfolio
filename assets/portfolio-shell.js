@@ -3,1056 +3,832 @@
     {
       id: '1',
       title: 'Game Jam',
+      role: 'Gameplay Programmer',
       path: 'pages/projet1.html',
-      aliases: ['1', 'project1', 'projet1', 'game jam'],
-      summary: 'Plateformer rapide avec focus sur le feeling et l\'UI.',
-      skill: 'Unity / C#',
-      log: 'Boot sequence compiled. Jump buffer online.'
+      variant: 'featured',
+      summary: 'Plateformer rapide centré sur le feeling, le jump buffer et l\'UI.',
+      pitch: 'Un projet conçu pour une Game Jam, pensé pour être lisible, nerveux et immédiatement jouable.',
+      bullets: [
+        'Prototype du déplacement et du saut avec coyote time et jump buffer.',
+        'Mise en place de l\'UI de base et des écrans de fin de partie.',
+        'Intégration des retours visuels pour rendre le gameplay plus lisible.'
+      ],
+      tech: ['Unity', 'C#', 'Git'],
+      team: 'Équipe de 2 : 1 programmeur, 1 artiste.',
+      context: 'Game Jam de 48h.',
+      build: '',
+      source: '',
+      trailer: 'Trailer gameplay à intégrer.',
+      gallery: ['Capture de gameplay', 'UI / menu', 'Mécanique clé'],
+      cover: 'linear-gradient(135deg, #111111 0%, #3f3f46 42%, #cbd5e1 100%)'
     },
     {
       id: '2',
       title: 'Projet 3D',
+      role: 'Systems Programmer',
       path: 'pages/projet2.html',
-      aliases: ['2', 'project2', 'projet2', '3d'],
-      summary: 'Prototype 3D orienté systèmes et State Machine.',
-      skill: 'Unity 3D / C#',
-      log: 'World streaming stable. Enemy AI responding.'
+      variant: 'medium',
+      summary: 'Prototype 3D orienté systèmes, IA ennemie et State Machine.',
+      pitch: 'Un prototype 3D où j\'ai surtout travaillé la structure des comportements et la lisibilité des systèmes.',
+      bullets: [
+        'Création et refactoring de la State Machine des ennemis.',
+        'Mise en place des comportements de poursuite et de patrouille.',
+        'Travail en équipe avec Git pour garder un code propre et intégrable.'
+      ],
+      tech: ['Unity 3D', 'C#', 'Git'],
+      team: 'Équipe de 7 : 3 programmeurs, 3 artistes, 1 sound designer.',
+      context: 'Projet étudiant sur plusieurs semaines.',
+      build: '',
+      source: '',
+      trailer: 'Trailer gameplay à intégrer.',
+      gallery: ['Environnement 3D', 'IA ennemie', 'HUD'],
+      cover: 'linear-gradient(135deg, #0f172a 0%, #334155 50%, #dbeafe 100%)'
     },
     {
       id: '3',
       title: 'Projet Mobile',
+      role: 'Mobile Gameplay Programmer',
       path: 'pages/projet3.html',
-      aliases: ['3', 'project3', 'projet3', 'mobile'],
-      summary: 'Version mobile pensée pour les contrôles tactiles.',
-      skill: 'Unity Mobile',
-      log: 'Touch controls mapped. Performance profile green.'
+      variant: 'medium',
+      summary: 'Version mobile pensée pour les contrôles tactiles et la performance.',
+      pitch: 'Un projet mobile centré sur la prise en main tactile, la stabilité et l\'optimisation Android.',
+      bullets: [
+        'Intégration des contrôles tactiles et de leur retour visuel.',
+        'Optimisation des performances pour une exécution fluide sur mobile.',
+        'Gestion de la progression et des données de session.'
+      ],
+      tech: ['Unity', 'C#', 'Android'],
+      team: 'Équipe de 7 : pôles programme, art et audio.',
+      context: 'Projet étudiant orienté mobile.',
+      build: '',
+      source: '',
+      trailer: 'Trailer gameplay à intégrer.',
+      gallery: ['UI tactile', 'Gameplay portrait', 'Optimisation'],
+      cover: 'linear-gradient(135deg, #111827 0%, #52525b 48%, #f3f4f6 100%)'
     },
     {
       id: '4',
       title: 'Multijoueur',
+      role: 'Network Gameplay Programmer',
       path: 'pages/projet4.html',
-      aliases: ['4', 'project4', 'projet4', 'multi', 'multiplayer'],
+      variant: 'small',
       summary: 'Architecture réseau et synchronisation des joueurs.',
-      skill: 'Unity / Réseau',
-      log: 'Replication graph synced. Lobby handshake done.'
+      pitch: 'Un projet multijoueur où l\'objectif était de garder les interactions claires, stables et synchronisées.',
+      bullets: [
+        'Mise en place de la base réseau et des échanges de données.',
+        'Synchronisation des déplacements, des collisions et du score.',
+        'Organisation du code pour faciliter les tests en coopération.'
+      ],
+      tech: ['Unity', 'C#', 'Réseau'],
+      team: 'Projet en duo.',
+      context: 'Prototype réseau étudié en cours.',
+      build: '',
+      source: '',
+      trailer: 'Trailer gameplay à intégrer.',
+      gallery: ['Lobby', 'Sync joueurs', 'Partie réseau'],
+      cover: 'linear-gradient(135deg, #0f172a 0%, #1f2937 48%, #e5e7eb 100%)'
     },
     {
       id: '5',
       title: 'SFML',
+      role: 'C++ Systems Programmer',
       path: 'pages/projet5.html',
-      aliases: ['5', 'project5', 'projet5', 'sfml', 'cpp'],
+      variant: 'small',
       summary: 'Moteur en C++ avec boucle de jeu et collisions.',
-      skill: 'C++ / SFML',
-      log: 'Game loop locked. Memory safe path verified.'
+      pitch: 'Un projet bas niveau où j\'ai travaillé la boucle de jeu, la structure du code et les collisions.',
+      bullets: [
+        'Création de la boucle de jeu et du pipeline de rendu.',
+        'Gestion de la mémoire et des structures de données en C++.',
+        'Système de collision 2D simple et robuste.'
+      ],
+      tech: ['C++', 'SFML', 'Git'],
+      team: 'Équipe de 7 : répartition par modules.',
+      context: 'Projet technique sur moteur 2D.',
+      build: '',
+      source: '',
+      trailer: 'Trailer gameplay à intégrer.',
+      gallery: ['Boucle de jeu', 'Collision', 'Rendu'],
+      cover: 'linear-gradient(135deg, #111827 0%, #374151 45%, #fafafa 100%)'
     },
     {
       id: '6',
       title: 'CSFML',
+      role: 'C Systems Programmer',
       path: 'pages/projet6.html',
-      aliases: ['6', 'project6', 'projet6', 'csfml', 'c'],
+      variant: 'small',
       summary: 'Bas niveau en C avec rendu graphique maîtrisé.',
-      skill: 'C / CSFML',
-      log: 'Render layer online. Struct layout indexed.'
+      pitch: 'Un projet orienté C où j\'ai travaillé sur l\'affichage, les structures et la logique de jeu.',
+      bullets: [
+        'Programmation du rendu et de la logique principale en C.',
+        'Structuration des données et allocation mémoire.',
+        'Travail sur la clarté du code et l\'organisation des fichiers.'
+      ],
+      tech: ['C', 'CSFML', 'Git'],
+      team: 'Équipe de 7 : projet collectif.',
+      context: 'Projet technique en langage C.',
+      build: '',
+      source: '',
+      trailer: 'Trailer gameplay à intégrer.',
+      gallery: ['Rendu CSFML', 'Structures', 'Prototype'],
+      cover: 'linear-gradient(135deg, #09090b 0%, #3f3f46 52%, #d4d4d8 100%)'
     }
   ];
 
-  const snippets = {
-    '1': `if (canJump && grounded) {
-  velocityY = jumpStrength;
-  jumpBuffer = 0;
-}`,
-    '2': `switch (enemyState) {
-  case 'patrol': updatePatrol(); break;
-  case 'chase': updateChase(); break;
-}`,
-    '3': `if (touchCount > 0) {
-  movePlayer(touches[0].deltaX);
-  updateUI();
-}`,
-    '4': `void SyncPlayerState() {
-  network.Send(position, velocity, score);
-}`,
-    '5': `while (window.isOpen()) {
-  handleEvents();
-  update(deltaTime);
-  render();
-}`,
-    '6': `sfSprite_setPosition(sprite, playerPos);
-sfRenderWindow_drawSprite(window, sprite, NULL);`
-  };
-
-  const skillNodes = [
-    { label: 'Unity', level: 94 },
-    { label: 'C#', level: 90 },
-    { label: 'Gameplay', level: 95 },
-    { label: 'Réseau', level: 78 },
-    { label: 'C++ / C', level: 82 },
-    { label: 'Web / JS', level: 76 }
-  ];
-
-  const isHome = Boolean(document.querySelector('.projects-grid'));
-  const isProjectPage = Boolean(document.querySelector('.video-container') || document.querySelector('.media'));
-
-  const css = `
-    .shell-home body {
-      margin: 0;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .shell-home body > header,
-    .shell-home body > .container {
-      opacity: 0;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .shell-home #matrix-home-app {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      background: #000;
-      overflow: hidden;
-    }
-
-    .matrix-home-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      background: #000;
-    }
-
-    .matrix-home-glow {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at center, rgba(0, 255, 102, 0.12), transparent 42%),
-        radial-gradient(circle at center, rgba(0, 200, 80, 0.08), transparent 62%);
-      pointer-events: none;
-      mix-blend-mode: screen;
-    }
-
-    .matrix-home-vignette {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at center, transparent 0%, transparent 58%, rgba(0, 0, 0, 0.28) 100%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.55), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.68));
-    }
-
-    .matrix-home-center {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 18px;
-      z-index: 2;
-    }
-
-    .matrix-console {
-      width: min(920px, calc(100vw - 24px));
-      min-height: min(72vh, 640px);
-      border: 1px solid rgba(0, 255, 102, 0.35);
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(0, 10, 0, 0.9), rgba(0, 14, 0, 0.78));
-      box-shadow:
-        0 0 0 1px rgba(0, 255, 102, 0.08),
-        0 0 44px rgba(0, 255, 102, 0.16),
-        0 24px 90px rgba(0, 0, 0, 0.75);
-      backdrop-filter: blur(8px);
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .matrix-console::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 100% 3px;
-      opacity: 0.16;
-      mix-blend-mode: screen;
-    }
-
-    .matrix-console-header,
-    .matrix-console-footer,
-    .matrix-console-body {
-      position: relative;
-      z-index: 1;
-    }
-
-    .matrix-console-header {
-      display: flex;
-      justify-content: space-between;
-      gap: 14px;
-      align-items: center;
-      padding: 18px 20px 14px;
-      border-bottom: 1px solid rgba(0, 255, 102, 0.16);
-      font-family: 'Consolas', 'Courier New', monospace;
-    }
-
-    .matrix-console-title {
-      margin: 0;
-      color: #ffffff;
-      font-size: 1rem;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-    }
-
-    .matrix-console-status {
-      color: #6bff95;
-      font-size: 0.78rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      text-align: right;
-    }
-
-    .matrix-console-body {
-      display: grid;
-      grid-template-columns: 1fr;
-      padding: 18px 20px;
-      min-height: 0;
-    }
-
-    .matrix-screen,
-    .matrix-side {
-      border: 1px solid rgba(0, 255, 102, 0.18);
-      border-radius: 14px;
-      background: rgba(0, 0, 0, 0.4);
-      min-height: 0;
-    }
-
-    .matrix-screen {
-      display: grid;
-      grid-template-rows: 1fr auto;
-      overflow: hidden;
-    }
-
-    .matrix-output {
-      margin: 0;
-      padding: 16px;
-      overflow: auto;
-      color: #ffffff;
-      font-family: 'Consolas', 'Courier New', monospace;
-      font-size: 0.95rem;
-      line-height: 1.6;
-      white-space: pre-wrap;
-    }
-
-    .matrix-line {
-      margin: 0 0 6px;
-    }
-
-    .matrix-line.muted {
-      color: #d7ffe0;
-    }
-
-    .matrix-line.accent {
-      color: #6bff95;
-    }
-
-    .matrix-input-row {
-      display: flex;
-      gap: 10px;
-      padding: 14px 16px 16px;
-      border-top: 1px solid rgba(0, 255, 102, 0.14);
-      align-items: center;
-      font-family: 'Consolas', 'Courier New', monospace;
-    }
-
-    .matrix-prompt {
-      color: #6bff95;
-      flex: 0 0 auto;
-    }
-
-    .matrix-input {
-      flex: 1;
-      border: 0;
-      outline: none;
-      background: transparent;
-      color: #f3fff6;
-      font: inherit;
-      min-width: 0;
-    }
-
-    .matrix-cursor {
-      width: 10px;
-      height: 18px;
-      background: #6bff95;
-      animation: matrixBlink 1s steps(1) infinite;
-      flex: 0 0 auto;
-    }
-
-    .matrix-panel {
-      border: 1px solid rgba(0, 255, 102, 0.12);
-      border-radius: 12px;
-      padding: 14px;
-      background: rgba(0, 0, 0, 0.32);
-    }
-
-    .matrix-panel h2 {
-      margin: 0 0 10px;
-      color: #6bff95;
-      font-size: 0.86rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .matrix-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: grid;
-      gap: 8px;
-      color: #d7ffe0;
-      font-size: 0.88rem;
-    }
-
-    .matrix-list a {
-      color: #8affab;
-      text-decoration: none;
-    }
-
-    .matrix-list a:hover {
-      text-decoration: underline;
-    }
-
-    .matrix-console-footer {
-      padding: 0 20px 18px;
-      color: #7fd89a;
-      font-family: 'Consolas', 'Courier New', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-    }
-
-    @keyframes matrixBlink {
-      50% { opacity: 0; }
-    }
-
-    .shell-enhanced body {
-      background:
-        radial-gradient(circle at top, rgba(0, 255, 102, 0.12), transparent 30%),
-        linear-gradient(180deg, #000000 0%, #001409 55%, #000000 100%);
-    }
-
-    .shell-panel {
-      max-width: 1280px;
-      margin: 24px auto 0;
-      padding: 24px;
-      border: 1px solid rgba(0, 255, 102, 0.28);
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(0, 10, 4, 0.96), rgba(0, 24, 8, 0.9));
-      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.35);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .shell-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 100% 3px;
-      opacity: 0.08;
-      mix-blend-mode: screen;
-    }
-
-    .shell-top {
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .shell-terminal, .shell-tree, .shell-card, .shell-code, .shell-console {
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(0, 255, 102, 0.22);
-      border-radius: 16px;
-      background: rgba(0, 0, 0, 0.84);
-      box-shadow: inset 0 0 0 1px rgba(0, 255, 102, 0.05);
-    }
-
-    .shell-terminal {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      min-height: 360px;
-    }
-
-    .shell-label {
-      margin: 0 0 10px;
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #6bff95;
-      font-size: 0.78rem;
-    }
-
-    .shell-title {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: clamp(2rem, 5vw, 4rem);
-      line-height: 0.95;
-      color: #f8fafc;
-    }
-
-    .shell-title span {
-      color: #6bff95;
-      text-shadow: 0 0 24px rgba(0, 255, 102, 0.26);
-    }
-
-    .shell-subtitle {
-      margin: 12px 0 18px;
-      max-width: 56ch;
-      color: #ffffff;
-      font-size: 1rem;
-    }
-
-    .shell-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .shell-chip {
-      padding: 7px 11px;
-      border: 1px solid rgba(0, 255, 102, 0.24);
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.72);
-      color: #e2e8f0;
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
-    }
-
-    .shell-chip:hover {
-      transform: translateY(-1px);
-      border-color: rgba(0, 255, 102, 0.7);
-      background: rgba(0, 255, 102, 0.12);
-    }
-
-    .shell-input-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      margin-top: auto;
-      padding-top: 12px;
-      border-top: 1px solid rgba(0, 255, 102, 0.12);
-    }
-
-    .shell-prompt {
-      color: #22c55e;
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      flex: 0 0 auto;
-    }
-
-    .shell-input {
-      flex: 1;
-      background: rgba(0, 0, 0, 0.92);
-      border: 1px solid rgba(0, 255, 102, 0.24);
-      color: #f8fafc;
-      border-radius: 10px;
-      padding: 12px 14px;
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      outline: none;
-    }
-
-    .shell-input:focus { border-color: #6bff95; box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.12); }
-
-    .shell-submit {
-      border: 0;
-      border-radius: 10px;
-      padding: 12px 14px;
-      background: linear-gradient(180deg, #6bff95, #22c55e);
-      color: #001408;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-    .shell-output {
-      margin: 0;
-      padding: 14px;
-      min-height: 150px;
-      overflow: auto;
-      border-radius: 12px;
-      background: rgba(0, 0, 0, 0.42);
-      border: 1px solid rgba(0, 255, 102, 0.12);
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      color: #ffffff;
-      white-space: pre-wrap;
-      line-height: 1.5;
-    }
-
-    .shell-tree {
-      padding: 18px;
-      display: grid;
-      gap: 12px;
-      align-content: start;
-    }
-
-    .tree-branch {
-      padding: 12px;
-      border-radius: 12px;
-      background: linear-gradient(180deg, rgba(0, 18, 6, 0.95), rgba(0, 0, 0, 0.84));
-      border: 1px solid rgba(34, 197, 94, 0.18);
-    }
-
-    .tree-branch h3 {
-      margin: 0 0 8px;
-      font-size: 0.88rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: #86efac;
-    }
-
-    .tree-item { display: grid; gap: 6px; margin-bottom: 10px; }
-    .tree-item:last-child { margin-bottom: 0; }
-    .tree-item span { display: flex; justify-content: space-between; color: #ffffff; font-size: 0.85rem; }
-    .tree-bar { height: 8px; border-radius: 999px; background: rgba(0, 255, 102, 0.14); overflow: hidden; }
-    .tree-bar i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #22c55e, #ffffff); }
-
-    .shell-grid {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-
-    .shell-card {
-      padding: 16px;
-      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
-    }
-
-    .shell-card:hover { transform: translateY(-3px); border-color: rgba(0, 255, 102, 0.58); box-shadow: 0 18px 40px rgba(0,0,0,0.25); }
-
-    .shell-card h3 { margin: 0 0 10px; color: #6bff95; }
-    .shell-card p { margin: 0 0 12px; color: #ffffff; font-size: 0.92rem; }
-    .shell-card .meta { display: flex; flex-wrap: wrap; gap: 8px; }
-    .shell-tag {
-      padding: 4px 8px;
-      border-radius: 999px;
-      background: rgba(0, 255, 102, 0.12);
-      color: #d9ffe3;
-      border: 1px solid rgba(0, 255, 102, 0.2);
-      font-size: 0.76rem;
-    }
-
-    .shell-cta {
-      margin-top: 12px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .shell-button {
-      border: 1px solid rgba(0, 255, 102, 0.28);
-      background: rgba(0, 10, 4, 0.84);
-      color: #f8fafc;
-      border-radius: 10px;
-      padding: 9px 12px;
-      cursor: pointer;
-      text-decoration: none;
-      font-size: 0.85rem;
-    }
-
-    .shell-button.primary {
-      background: linear-gradient(180deg, #6bff95, #22c55e);
-      color: #001408;
-      border-color: transparent;
-      font-weight: 800;
-    }
-
-    .shell-console {
-      margin-top: 18px;
-      padding: 16px;
-    }
-
-    .console-lines {
-      margin: 0;
-      display: grid;
-      gap: 8px;
-      color: #cbd5e1;
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      font-size: 0.88rem;
-    }
-
-    .project-hud {
-      max-width: 1100px;
-      margin: 18px auto 0;
-      padding: 0 20px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
-      gap: 16px;
-    }
-
-    .mission-card, .code-snippet {
-      border: 1px solid rgba(0, 255, 102, 0.22);
-      background: linear-gradient(180deg, rgba(0, 10, 4, 0.92), rgba(0, 18, 6, 0.86));
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-    }
-
-    .mission-card h2, .code-snippet h2 { margin: 0 0 10px; color: #ffffff; font-size: 1.05rem; }
-    .mission-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-
-    .code-snippet pre {
-      margin: 0;
-      overflow: auto;
-      padding: 14px;
-      border-radius: 12px;
-      background: #000000;
-      color: #ffffff;
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      font-size: 0.84rem;
-      line-height: 1.55;
-      border: 1px solid rgba(0, 255, 102, 0.14);
-    }
-
-    .project-description-input {
-      width: 100%;
-      min-height: 180px;
-      box-sizing: border-box;
-      resize: vertical;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 255, 102, 0.18);
-      background: #000000;
-      color: #ffffff;
-      padding: 14px;
-      font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
-      font-size: 0.9rem;
-      line-height: 1.55;
-      outline: none;
-    }
-
-    .project-description-input:focus {
-      border-color: #6bff95;
-      box-shadow: 0 0 0 3px rgba(0, 255, 102, 0.14);
-    }
-
-    .project-description-preview {
-      margin-top: 12px;
-      padding: 14px;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 255, 102, 0.14);
-      background: rgba(0, 0, 0, 0.58);
-      color: #ffffff;
-      min-height: 88px;
-      white-space: pre-wrap;
-      line-height: 1.55;
-    }
-
-    .project-console {
-      max-width: 1100px;
-      margin: 16px auto 0;
-      padding: 0 20px;
-    }
-
-    .project-console .console-lines { padding: 16px; border-radius: 16px; border: 1px solid rgba(0, 255, 102, 0.2); background: rgba(0, 0, 0, 0.82); color: #ffffff; }
-
-    @media (max-width: 920px) {
-      .shell-top, .project-hud { grid-template-columns: 1fr; }
-    }
-  `;
-
-  const style = document.createElement('style');
-  style.textContent = css;
-  document.head.appendChild(style);
-  document.documentElement.classList.add('shell-enhanced');
-
-  const projectForPath = (path) => {
-    const normalized = path.replace(/\/$/, '');
-    return projects.find((project) => normalized.endsWith(project.path) || project.aliases.some((alias) => normalized.includes(alias)));
-  };
-
-  const getProjectNameFromPage = () => {
-    const title = document.querySelector('header h1')?.textContent?.trim() || document.title;
-    return title.replace(/^\[|\]$/g, '');
-  };
-
-  const appendConsoleLine = (container, text) => {
-    const line = document.createElement('div');
-    line.textContent = `> ${text}`;
-    container.appendChild(line);
-    container.scrollTop = container.scrollHeight;
-  };
-
-  const renderTextLines = (container, lines, className = '') => {
-    container.innerHTML = '';
-    lines.forEach((line) => {
-      const entry = document.createElement('div');
-      entry.className = `matrix-line${className ? ` ${className}` : ''}`;
-      entry.textContent = line;
-      container.appendChild(entry);
-    });
-    container.scrollTop = container.scrollHeight;
-  };
-
-  const buildHome = () => {
-    if (document.getElementById('matrix-home-app')) {
-      return;
-    }
-
-    document.documentElement.classList.add('shell-home');
-
-    const app = document.createElement('section');
-    app.id = 'matrix-home-app';
-    app.innerHTML = `
-      <canvas class="matrix-home-canvas" id="matrix-home-canvas" aria-hidden="true"></canvas>
-      <div class="matrix-home-glow" aria-hidden="true"></div>
-      <div class="matrix-home-vignette" aria-hidden="true"></div>
-      <div class="matrix-home-center">
-        <section class="matrix-console" aria-label="Console du portfolio">
-          <div class="matrix-console-header">
-            <h1 class="matrix-console-title">Portfolio Matrix</h1>
-            <div class="matrix-console-status">Online // Type help</div>
+  const projectByPath = (pathname) => projects.find((project) => pathname.endsWith(project.path));
+
+  const escapeHtml = (value) => String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+  const renderTags = (items) => items.map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join('');
+
+  const renderCard = (project) => {
+    const coverStyle = `--card-bg: ${project.cover};`;
+    return `
+      <a class="card card--${project.variant}" href="${project.path}">
+        <div class="card-img-placeholder" style="${coverStyle}"></div>
+        <div class="card-content">
+          <p class="card-kicker">${escapeHtml(project.role)}</p>
+          <h3 class="card-title">${escapeHtml(project.title)}</h3>
+          <p class="card-summary">${escapeHtml(project.summary)}</p>
+          <div class="card-meta">${renderTags(project.tech)}</div>
+          <div class="card-footer">
+            <span class="card-note">${project.variant === 'featured' ? 'Projet phare' : 'Plus d\'info'}</span>
+            <span class="card-cta">Voir le projet</span>
           </div>
-          <div class="matrix-console-body">
-            <div class="matrix-screen">
-              <div class="matrix-output" id="matrix-output" aria-live="polite"></div>
-              <div class="matrix-input-row">
-                <span class="matrix-prompt">C:\\portfolio&gt;</span>
-                <input class="matrix-input" id="matrix-input" autocomplete="off" spellcheck="false" placeholder="help" />
-                <span class="matrix-cursor" aria-hidden="true"></span>
-              </div>
+        </div>
+      </a>
+    `;
+  };
+
+  const renderHome = () => {
+    const cards = projects.map(renderCard).join('');
+
+    document.title = 'Portfolio - Développeur Jeu Vidéo';
+    document.body.innerHTML = `
+      <main class="portfolio-shell portfolio-home">
+        <header class="site-header">
+          <div class="site-heading">
+            <p class="site-kicker">Portfolio développeur jeu vidéo</p>
+            <h1 class="site-title">6 projets, une lecture rapide.</h1>
+            <p class="site-lead">Une grille bento sobre pour présenter les projets les plus solides, avec une hiérarchie claire et des accès directs à chaque deep dive.</p>
+          </div>
+          <div class="site-actions">
+            <a class="button" href="#projects">Voir les projets</a>
+            <a class="button secondary" href="#contact">CV / Contact</a>
+          </div>
+        </header>
+
+        <section class="intro-strip" aria-label="Résumé du portfolio">
+          <div class="intro-chip"><span>Unity</span><strong>C# / Gameplay</strong></div>
+          <div class="intro-chip"><span>SFML</span><strong>C++ / C</strong></div>
+          <div class="intro-chip"><span>Focus</span><strong>Lisibilité et impact recruteur</strong></div>
+        </section>
+
+        <section class="projects-section" id="projects">
+          <div class="section-header">
+            <p class="site-kicker">Grille bento</p>
+            <h2>Projets sélectionnés</h2>
+            <p>Le projet phare prend plus de place, les projets secondaires restent lisibles, et chaque carte donne accès à une page détaillée.</p>
+          </div>
+          <div class="projects-grid">
+            ${cards}
+          </div>
+        </section>
+
+        <section class="contact-strip" id="contact">
+          <div>
+            <p class="site-kicker">Contact</p>
+            <h2>À brancher avec tes liens finaux</h2>
+            <p>Ajoute ici LinkedIn, GitHub et CV PDF pour finaliser la page d\'accueil.</p>
+          </div>
+          <div class="site-actions">
+            <a class="button" href="#projects">Retour aux projets</a>
+          </div>
+        </section>
+      </main>
+    `;
+  };
+
+  const renderListItems = (items) => items.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+
+  const renderProjectPage = (project) => {
+    const buildButton = project.build
+      ? `<a class="btn btn-primary" href="${project.build}" target="_blank" rel="noreferrer">Jouer / Télécharger le Build</a>`
+      : '<span class="btn btn-primary is-disabled">Jouer / Télécharger le Build</span>';
+
+    const sourceButton = project.source
+      ? `<a class="btn" href="${project.source}" target="_blank" rel="noreferrer">Code Source</a>`
+      : '<span class="btn is-disabled">Code Source</span>';
+
+    document.title = `${project.title} - Portfolio`;
+    document.body.innerHTML = `
+      <main class="portfolio-shell project-shell">
+        <a class="back-link" href="../Site.html">← Retour au portfolio</a>
+
+        <section class="project-hero">
+          <div class="media">
+            <div class="media-placeholder" style="background: ${project.cover};">
+              <p class="media-label">Trailer</p>
+              <h1>${escapeHtml(project.title)}</h1>
+              <p>${escapeHtml(project.trailer)}</p>
+              <span class="media-meta">${escapeHtml(project.role)}</span>
             </div>
           </div>
-          <div class="matrix-console-footer">Minimal shell interface // green mode // keyboard first</div>
+          <div class="project-title-row">
+            <div>
+              <p class="site-kicker">Projet ${escapeHtml(project.id)}</p>
+              <h1 class="project-title">${escapeHtml(project.title)} — ${escapeHtml(project.role)}</h1>
+              <p class="project-role">${escapeHtml(project.summary)}</p>
+            </div>
+          </div>
         </section>
-      </div>
+
+        <section class="project-grid">
+          <article class="panel">
+            <h2>Pitch</h2>
+            <p>${escapeHtml(project.pitch)}</p>
+
+            <h2>Ce que j\'ai fait</h2>
+            <ul class="list description-list">
+              ${renderListItems(project.bullets)}
+            </ul>
+
+            <h2>Galerie</h2>
+            <div class="grid">
+              ${project.gallery.map((item) => `<div class="shot">${escapeHtml(item)}</div>`).join('')}
+            </div>
+          </article>
+
+          <aside class="meta-grid">
+            <div class="panel meta-block">
+              <h2>Technologies</h2>
+              <p>${project.tech.map(escapeHtml).join(' • ')}</p>
+            </div>
+            <div class="panel meta-block">
+              <h2>Équipe</h2>
+              <p>${escapeHtml(project.team)}</p>
+            </div>
+            <div class="panel meta-block">
+              <h2>Contexte</h2>
+              <p>${escapeHtml(project.context)}</p>
+            </div>
+          </aside>
+        </section>
+
+        <section class="downloads">
+          ${buildButton}
+          ${sourceButton}
+        </section>
+      </main>
     `;
-
-    document.body.insertBefore(app, document.body.firstChild);
-
-    const output = app.querySelector('#matrix-output');
-    const input = app.querySelector('#matrix-input');
-    const canvas = app.querySelector('#matrix-home-canvas');
-    const context = canvas.getContext('2d');
-
-    const write = (text, className = '') => {
-      const line = document.createElement('div');
-      line.className = `matrix-line${className ? ` ${className}` : ''}`;
-      line.textContent = text;
-      output.appendChild(line);
-      output.scrollTop = output.scrollHeight;
-    };
-
-    const getSocialEntries = () => {
-      const headerLinks = Array.from(document.querySelectorAll('header .links a')).map((link) => ({
-        label: link.textContent.trim(),
-        href: link.getAttribute('href') || '#'
-      }));
-
-      if (headerLinks.length) {
-        return headerLinks;
-      }
-
-      return [
-        { label: 'GitHub', href: 'https://github.com/' },
-        { label: 'LinkedIn', href: 'https://www.linkedin.com/' },
-        { label: 'Email', href: 'mailto:you@example.com' }
-      ];
-    };
-
-    const renderProjectList = () => {
-      write('Projects available:');
-      projects.forEach((project) => {
-        write(`${project.id}. ${project.title} — ${project.summary}`, 'muted');
-      });
-      write('Use open <id> to launch a project.', 'accent');
-    };
-
-    const renderSocialList = () => {
-      write('Social links:');
-      getSocialEntries().forEach((entry) => {
-        const item = document.createElement('div');
-        item.className = 'matrix-line muted';
-        item.innerHTML = `${entry.label} — <a href="${entry.href}" target="_blank" rel="noreferrer">${entry.href}</a>`;
-        output.appendChild(item);
-      });
-      output.scrollTop = output.scrollHeight;
-    };
-
-    const commands = {
-      help: () => {
-        write('help');
-        write('  help   : affiche la liste des commandes', 'muted');
-        write('  project: affiche la liste des projets', 'muted');
-        write('  social : affiche les reseaux', 'muted');
-        write('  open X : ouvre le projet X', 'muted');
-        write('  clear  : nettoie la console', 'muted');
-      },
-      project: () => renderProjectList(),
-      social: () => renderSocialList(),
-      clear: () => {
-        output.innerHTML = '';
-        write('Console cleared.', 'accent');
-      },
-      cls: () => {
-        output.innerHTML = '';
-        write('Console cleared.', 'accent');
-      }
-    };
-
-    const runCommand = (raw) => {
-      const command = raw.trim();
-      if (!command) {
-        return;
-      }
-
-      write(`C:\\portfolio> ${command}`, 'accent');
-
-      const [action, ...rest] = command.toLowerCase().split(/\s+/);
-
-      if (action === 'open') {
-        const target = rest.join(' ');
-        const project = projects.find((item) => item.id === target || item.title.toLowerCase().includes(target) || item.aliases.some((alias) => alias === target));
-        if (project) {
-          window.location.href = project.path;
-          return;
-        }
-
-        write('Projet introuvable. Essaie open 1, open 2, open 3...', 'muted');
-        return;
-      }
-
-      const commandHandler = commands[action];
-      if (commandHandler) {
-        commandHandler();
-        return;
-      }
-
-      write(`Commande inconnue: ${command}`, 'muted');
-      write('Tape help pour voir les commandes disponibles.', 'muted');
-    };
-
-    const resizeCanvas = () => {
-      const ratio = window.devicePixelRatio || 1;
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      canvas.width = Math.floor(width * ratio);
-      canvas.height = Math.floor(height * ratio);
-      canvas.style.width = `${width}px`;
-      canvas.style.height = `${height}px`;
-      context.setTransform(ratio, 0, 0, ratio, 0, 0);
-    };
-
-    const createGlyph = (now, glyphSwitchDelayMs) => ({
-      char: Math.random() > 0.5 ? '1' : '0',
-      previousChar: Math.random() > 0.5 ? '1' : '0',
-      nextFlipAt: now + glyphSwitchDelayMs,
-      flipStartedAt: now - 1000
-    });
-
-    const createColumnState = (height, rowGapY, trailLength, now, glyphSwitchDelayMs, minSpeed = 0.15, maxSpeed = 0.3) => ({
-      position: Math.random() * (height / rowGapY),
-      speed: minSpeed + Math.random() * (maxSpeed - minSpeed),
-      trail: Array.from({ length: trailLength }, () => createGlyph(now, glyphSwitchDelayMs))
-    });
-
-    const columns = [];
-    const drawMatrix = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const fontSize = 30;
-      const columnGapX = 50;
-      const rowGapY = 30;
-      const fallSpeed = 0.15;
-      const trailLength = 20;
-      const columnRespawnOffsetRows = trailLength;
-      const glyphSwitchDelaySeconds = 10;
-      const glyphSwitchDelayMs = glyphSwitchDelaySeconds * 1000;
-      const glyphFadeDurationMs = 140;
-      const columnCount = Math.max(1, Math.floor(width / columnGapX));
-      const now = performance.now();
-
-      if (columns.length !== columnCount) {
-        columns.length = 0;
-        for (let index = 0; index < columnCount; index += 1) {
-          columns.push(createColumnState(height, rowGapY, trailLength, now, glyphSwitchDelayMs));
-        }
-      }
-
-      context.clearRect(0, 0, width, height);
-      context.font = `${fontSize}px Consolas, monospace`;
-
-      for (let index = 0; index < columns.length; index += 1) {
-        const x = index * columnGapX;
-        const column = columns[index];
-        const previousRow = Math.floor(column.position);
-        column.position += column.speed;
-        const currentRow = Math.floor(column.position);
-
-        if (currentRow > previousRow) {
-          for (let step = 0; step < currentRow - previousRow; step += 1) {
-            column.trail.unshift(createGlyph(now, glyphSwitchDelayMs));
-            column.trail.length = trailLength;
-          }
-
-          if (column.position > (height / rowGapY) + columnRespawnOffsetRows) {
-            column.position = -columnRespawnOffsetRows;
-          }
-        }
-
-        column.trail.forEach((glyph) => {
-          if (now >= glyph.nextFlipAt) {
-            glyph.previousChar = glyph.char;
-            glyph.char = Math.random() > 0.5 ? '1' : '0';
-            glyph.flipStartedAt = now;
-            glyph.nextFlipAt = now + glyphSwitchDelayMs;
-          }
-        });
-
-        for (let trailIndex = 0; trailIndex < trailLength; trailIndex += 1) {
-          const y = (column.position - trailIndex) * rowGapY;
-
-          if (y < -rowGapY) {
-            break;
-          }
-
-          const glyph = column.trail[trailIndex];
-          const char = glyph ? glyph.char : (Math.random() > 0.5 ? '1' : '0');
-          const positionFactor = 1 - trailIndex / trailLength;
-          const transitionProgress = glyph
-            ? Math.min(1, (now - glyph.flipStartedAt) / glyphFadeDurationMs)
-            : 1;
-          const alpha = Math.max(0.08, positionFactor);
-
-          context.fillStyle = trailIndex === 0
-            ? `rgba(255, 255, 255, ${alpha})`
-            : `rgba(107, 255, 149, ${alpha})`;
-
-          if (glyph && transitionProgress < 1) {
-            const transitionAlpha = Math.max(0, 1 - transitionProgress);
-            context.globalAlpha = alpha * transitionAlpha;
-            context.fillText(glyph.previousChar, x, y);
-            context.globalAlpha = alpha * transitionProgress;
-            context.fillText(char, x, y);
-            context.globalAlpha = 1;
-          } else {
-            context.fillText(char, x, y);
-          }
-        }
-      }
-
-      window.requestAnimationFrame(drawMatrix);
-    };
-
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-    drawMatrix();
-
-    write('Matrix console initialized.');
-    write('Tape help pour commencer.', 'muted');
-    write('Commandes: help, project, social, open <id>, clear', 'muted');
-
-    input.focus();
-    input.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') {
-        const value = input.value;
-        input.value = '';
-        runCommand(value);
-      }
-    });
-
-    app.addEventListener('click', () => input.focus());
   };
 
-  const buildProjectPage = () => {
-    const media = document.querySelector('.video-container, .media');
-    const container = document.querySelector('.container, .main, main');
-    if (!media || !container || document.getElementById('project-hud')) {
+  const injectStyles = () => {
+    if (document.getElementById('portfolio-shell-styles')) {
       return;
     }
 
-    const project = projectForPath(window.location.pathname) || {
-      id: '0',
-      title: getProjectNameFromPage(),
-      summary: 'Mission dossier',
-      skill: 'Game Dev',
-      log: 'Session loaded.'
-    };
-
-    const headerTitle = document.querySelector('header h1');
-    if (headerTitle) {
-      headerTitle.textContent = project.title;
-    }
-    document.title = `Mission ${project.id} - ${project.title}`;
-
-    const hud = document.createElement('section');
-    hud.id = 'project-hud';
-    hud.className = 'project-hud';
-    hud.innerHTML = `
-      <div class="mission-card">
-        <h2>Mission ${project.id}: ${project.title}</h2>
-        <p>${project.summary}</p>
-        <div class="mission-row">
-          <button class="shell-button primary" id="project-play-button" type="button">Play trailer</button>
-          <a class="shell-button" href="../Site.html">Return hub</a>
-        </div>
-        <div class="mission-row">
-          <span class="shell-tag">${project.skill}</span>
-          <span class="shell-tag">Playable showcase</span>
-        </div>
-      </div>
-      <div class="code-snippet">
-        <h2>Description</h2>
-        <textarea class="project-description-input" id="project-description-input" aria-label="Description du jeu">Décris ici ton jeu: concept, gameplay, objectif, contraintes techniques, et ce que tu as développé.</textarea>
-        <div class="project-description-preview" id="project-description-preview"></div>
-      </div>
-    `;
-
-    container.parentNode.insertBefore(hud, container);
-
-    const consoleWrap = document.createElement('div');
-    consoleWrap.className = 'project-console';
-    consoleWrap.innerHTML = `
-      <div class="console-lines">
-        <div>MISSION LOG: ${project.log}</div>
-        <div>ASSETS: trailer, screenshots, build links</div>
-        <div>STATUS: ready</div>
-      </div>
-    `;
-    container.insertAdjacentElement('afterend', consoleWrap);
-
-    const descriptionInput = hud.querySelector('#project-description-input');
-    const descriptionPreview = hud.querySelector('#project-description-preview');
-    const syncDescription = () => {
-      const value = descriptionInput.value.trim();
-      descriptionPreview.textContent = value || 'Tu peux écrire ici une vraie description du jeu.';
-    };
-
-    if (descriptionInput && descriptionPreview) {
-      descriptionInput.addEventListener('input', syncDescription);
-      syncDescription();
-    }
-
-    const playButton = hud.querySelector('#project-play-button');
-    playButton.addEventListener('click', () => {
-      media.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      const video = media.querySelector('video');
-      if (video) {
-        video.play().catch(() => {});
+    const style = document.createElement('style');
+    style.id = 'portfolio-shell-styles';
+    style.textContent = `
+      :root {
+        color-scheme: light;
+        --bg: #f5f3ee;
+        --surface: #ffffff;
+        --surface-soft: #faf9f6;
+        --surface-ink: #111111;
+        --text-main: #111111;
+        --text-muted: #52525b;
+        --border: #dfddd6;
+        --shadow: 0 20px 60px rgba(15, 23, 42, 0.08);
       }
-    });
+
+      html, body {
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+        color: var(--text-main);
+        font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .portfolio-shell {
+        width: min(1360px, calc(100vw - 32px));
+        margin: 0 auto;
+        padding: 28px 0 56px;
+      }
+
+      .site-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 24px;
+        margin-bottom: 22px;
+      }
+
+      .site-heading {
+        max-width: 68ch;
+      }
+
+      .site-kicker {
+        margin: 0 0 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        font-size: 0.76rem;
+        color: var(--text-muted);
+      }
+
+      .site-title,
+      .section-header h2,
+      .contact-strip h2,
+      .project-title {
+        margin: 0;
+        letter-spacing: -0.05em;
+        line-height: 0.96;
+      }
+
+      .site-title {
+        font-size: clamp(2.6rem, 6vw, 5rem);
+        max-width: 10ch;
+      }
+
+      .site-lead,
+      .section-header p,
+      .contact-strip p,
+      .project-role,
+      .panel p,
+      .card-summary {
+        color: var(--text-muted);
+        line-height: 1.65;
+      }
+
+      .site-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .button,
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 46px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        border: 1px solid var(--surface-ink);
+        background: var(--surface-ink);
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        transition: transform 160ms ease, background 160ms ease, color 160ms ease, border-color 160ms ease;
+      }
+
+      .button.secondary,
+      .btn:not(.btn-primary) {
+        background: transparent;
+        color: var(--surface-ink);
+      }
+
+      .button:hover,
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .button.secondary:hover,
+      .btn:not(.btn-primary):hover {
+        background: rgba(17, 17, 17, 0.06);
+      }
+
+      .is-disabled {
+        opacity: 0.55;
+        pointer-events: none;
+      }
+
+      .intro-strip,
+      .contact-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-bottom: 18px;
+      }
+
+      .intro-chip,
+      .contact-strip,
+      .panel {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+      }
+
+      .intro-chip {
+        padding: 18px;
+      }
+
+      .intro-chip span {
+        display: block;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.72rem;
+        margin-bottom: 8px;
+      }
+
+      .intro-chip strong {
+        display: block;
+        font-size: 1rem;
+      }
+
+      .projects-section {
+        margin-top: 26px;
+      }
+
+      .section-header {
+        display: grid;
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+      }
+
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        position: relative;
+        min-height: 240px;
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        align-items: flex-end;
+        isolation: isolate;
+      }
+
+      .card::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 18%, rgba(0, 0, 0, 0.58) 100%);
+        z-index: 1;
+      }
+
+      .card-img-placeholder {
+        position: absolute;
+        inset: 0;
+        background: var(--card-bg);
+        transform: scale(1);
+        transition: transform 420ms ease;
+        z-index: 0;
+      }
+
+      .card:hover .card-img-placeholder {
+        transform: scale(1.04);
+      }
+
+      .card-content {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding: 22px;
+        color: #ffffff;
+        display: grid;
+        gap: 12px;
+      }
+
+      .card-kicker {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.8);
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.74rem;
+      }
+
+      .card-title {
+        margin: 0;
+        font-size: clamp(1.35rem, 2.6vw, 2.1rem);
+        letter-spacing: -0.04em;
+      }
+
+      .card-summary {
+        margin: 0;
+        max-width: 42ch;
+        color: rgba(255, 255, 255, 0.84);
+      }
+
+      .card-meta {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        color: #ffffff;
+        backdrop-filter: blur(10px);
+        font-size: 0.78rem;
+      }
+
+      .card-footer {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+        margin-top: 4px;
+      }
+
+      .card-note {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .card-cta {
+        padding: 9px 12px;
+        border-radius: 999px;
+        background: #ffffff;
+        color: #111111;
+        font-weight: 800;
+        font-size: 0.82rem;
+      }
+
+      .card--featured {
+        grid-column: span 7;
+        min-height: 520px;
+      }
+
+      .card--medium {
+        grid-column: span 5;
+        min-height: 250px;
+      }
+
+      .card--small {
+        grid-column: span 4;
+        min-height: 230px;
+      }
+
+      .card--featured .card-content {
+        padding: 28px;
+      }
+
+      .contact-strip {
+        grid-template-columns: minmax(0, 1.6fr) auto;
+        align-items: center;
+        padding: 22px;
+        margin-top: 28px;
+      }
+
+      .contact-strip h2 {
+        font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      }
+
+      .project-shell {
+        width: min(1180px, calc(100vw - 32px));
+        padding-top: 24px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        margin-bottom: 18px;
+        text-decoration: none;
+        color: var(--text-muted);
+        font-weight: 700;
+      }
+
+      .project-hero {
+        display: grid;
+        gap: 18px;
+      }
+
+      .media {
+        border: 1px solid var(--border);
+        border-radius: 30px;
+        background: var(--surface-ink);
+        color: #ffffff;
+        overflow: hidden;
+        min-height: 520px;
+        box-shadow: var(--shadow);
+      }
+
+      .media-placeholder {
+        min-height: 520px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        text-align: center;
+        padding: 32px;
+        background: var(--hero-bg);
+      }
+
+      .media-placeholder h1 {
+        margin: 0;
+        font-size: clamp(1.9rem, 4vw, 3.8rem);
+        letter-spacing: -0.05em;
+      }
+
+      .media-placeholder p,
+      .media-placeholder .media-meta,
+      .media-label {
+        color: rgba(255, 255, 255, 0.84);
+      }
+
+      .media-label {
+        margin: 0;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        font-size: 0.74rem;
+      }
+
+      .project-title-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: flex-end;
+        flex-wrap: wrap;
+      }
+
+      .project-title {
+        font-size: clamp(2rem, 4vw, 3.8rem);
+      }
+
+      .project-role {
+        margin: 10px 0 0;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+        gap: 18px;
+        margin-top: 20px;
+      }
+
+      .panel {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .panel h2 {
+        margin: 0 0 12px;
+        font-size: 1.05rem;
+      }
+
+      .panel h2:not(:first-child) {
+        margin-top: 22px;
+      }
+
+      .list {
+        margin: 0;
+        padding-left: 18px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .list li {
+        color: var(--text-muted);
+      }
+
+      .meta-grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .meta-block {
+        display: grid;
+        gap: 6px;
+      }
+
+      .meta-block p {
+        margin: 0;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+
+      .shot {
+        min-height: 160px;
+        border-radius: 18px;
+        border: 1px dashed #d1d5db;
+        background: #fafafa;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-muted);
+        text-align: center;
+        padding: 16px;
+      }
+
+      .downloads {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      @media (max-width: 1080px) {
+        .site-header,
+        .contact-strip,
+        .project-grid {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .site-header {
+          align-items: start;
+        }
+
+        .intro-strip,
+        .grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card--featured,
+        .card--medium,
+        .card--small {
+          grid-column: span 12;
+        }
+
+        .media-placeholder,
+        .media {
+          min-height: 360px;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .portfolio-shell {
+          width: min(100vw - 20px, 1360px);
+        }
+
+        .projects-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .card,
+        .card--featured,
+        .card--medium,
+        .card--small {
+          grid-column: auto;
+          min-height: 220px;
+        }
+
+        .card-footer {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    `;
+
+    document.head.appendChild(style);
   };
 
-  window.addEventListener('DOMContentLoaded', () => {
-    if (isHome) {
-      buildHome();
+  const init = () => {
+    injectStyles();
+
+    const currentProject = projectByPath(window.location.pathname);
+    document.documentElement.classList.add('portfolio-app');
+
+    if (currentProject) {
+      document.documentElement.classList.add('portfolio-project-page');
+      renderProjectPage(currentProject);
+      return;
     }
-    if (isProjectPage) {
-      buildProjectPage();
-    }
-  });
+
+    document.documentElement.classList.add('portfolio-home-page');
+    renderHome();
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init, { once: true });
+  } else {
+    init();
+  }
 })();
