@@ -1,7 +1,7 @@
 (function () {
     const pageKey = 'portfolio-dev-mode:' + window.location.pathname;
     const toggleKey = 'F10';
-    const canUseNetworkStorage = window.location.protocol !== 'file:';
+    const canUseNetworkStorage = false;
     const stateEndpoint = '/api/state';
     const uploadEndpoint = '/api/upload';
     const mediaDatabaseName = 'portfolio-dev-media';
@@ -306,44 +306,8 @@
         localStorage.setItem(pageKey, JSON.stringify(state));
     };
 
-    const fetchServerState = async () => {
-        if (!canUseNetworkStorage) {
-            return null;
-        }
-
-        try {
-            const response = await fetch(`${stateEndpoint}?path=${encodeURIComponent(pageKey)}`);
-            if (!response.ok) {
-                return null;
-            }
-            const payload = await response.json();
-            if (payload && payload.state && typeof payload.state === 'object') {
-                return payload.state;
-            }
-        } catch {
-            return null;
-        }
-
-        return null;
-    };
-
     const persistState = async (state) => {
         saveState(state);
-        if (!canUseNetworkStorage) {
-            return;
-        }
-
-        try {
-            await fetch(stateEndpoint, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ path: pageKey, state })
-            });
-        } catch (error) {
-            console.warn('Unable to persist state to server.', error);
-        }
     };
 
     const openMediaDatabase = () => new Promise((resolve, reject) => {
@@ -602,45 +566,7 @@
     };
 
     const applySavedState = () => {
-        const fields = selectorsByPage();
-        const pending = [];
-        for (const field of fields) {
-            const element = document.querySelector(field.selector);
-            if (!element) {
-                continue;
-            }
-            pending.push(applyStateToElement(element, field));
-        }
-
-        const state = getState();
-        for (const [key, value] of Object.entries(state)) {
-            if (!key.startsWith('dom:')) {
-                continue;
-            }
-            const selector = key.slice(4);
-            const element = document.querySelector(selector);
-            if (!element) {
-                continue;
-            }
-            pending.push((async () => {
-                const resolvedValue = typeof value === 'object' && value !== null ? value.value : value;
-                const kind = typeof value === 'object' && value !== null ? value.kind : 'text';
-                if (kind === 'html') {
-                    element.innerHTML = resolvedValue;
-                } else if (kind === 'link') {
-                    const parts = String(resolvedValue).split('\n');
-                    if (parts[0]) {
-                        element.setAttribute('href', parts[0]);
-                    }
-                    if (parts[1]) {
-                        element.textContent = parts[1];
-                    }
-                } else {
-                    element.textContent = resolvedValue;
-                }
-            })());
-        }
-        return Promise.all(pending);
+        return Promise.resolve();
     };
 
     const buildPanel = () => {
@@ -890,11 +816,6 @@
     }, true);
 
     window.addEventListener('DOMContentLoaded', () => {
-        fetchServerState().then((serverState) => {
-            if (serverState) {
-                saveState(serverState);
-            }
-            applySavedState();
-        });
+        applySavedState();
     });
 })();
