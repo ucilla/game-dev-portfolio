@@ -2,20 +2,20 @@
   const projects = [
     {
       id: '1',
-      title: 'Game Jam',
+      title: 'Escape Moscow',
       role: 'Gameplay Programmer',
       path: 'pages/projet1.html',
       variant: 'featured',
-      summary: 'Plateformer rapide centré sur le feeling, le jump buffer et l\'UI.',
-      pitch: 'Un projet conçu pour une Game Jam, pensé pour être lisible, nerveux et immédiatement jouable.',
+      summary: 'Projet d\'action rapide centré sur le feeling, la lisibilité et le rythme.',
+      pitch: 'Un projet pensé pour être immédiat à comprendre, nerveux et agréable à jouer.',
       bullets: [
-        'Prototype du déplacement et du saut avec coyote time et jump buffer.',
-        'Mise en place de l\'UI de base et des écrans de fin de partie.',
-        'Intégration des retours visuels pour rendre le gameplay plus lisible.'
+        'Prototype du déplacement et de la boucle de gameplay principale.',
+        'Mise en place d\'une interface simple et lisible pour accompagner l\'action.',
+        'Intégration des retours visuels pour garder une lecture claire en jeu.'
       ],
       tech: ['Unity', 'C#', 'Git'],
-      team: 'Équipe de 2 : 1 programmeur, 1 artiste.',
-      context: 'Game Jam de 48h.',
+      team: 'Projet personnel / équipe réduite.',
+      context: 'Prototype orienté gameplay.',
       build: '',
       source: '',
       trailer: 'Trailer gameplay à intégrer.',
@@ -24,19 +24,19 @@
     },
     {
       id: '2',
-      title: 'Projet 3D',
+      title: 'Ninja Frog',
       role: 'Systems Programmer',
       path: 'pages/projet2.html',
       variant: 'medium',
-      summary: 'Prototype 3D orienté systèmes, IA ennemie et State Machine.',
-      pitch: 'Un prototype 3D où j\'ai surtout travaillé la structure des comportements et la lisibilité des systèmes.',
+      summary: 'Projet centré sur les systèmes de gameplay et la lisibilité des comportements.',
+      pitch: 'Un projet où j\'ai surtout travaillé la structure des comportements et la fluidité du gameplay.',
       bullets: [
         'Création et refactoring de la State Machine des ennemis.',
         'Mise en place des comportements de poursuite et de patrouille.',
         'Travail en équipe avec Git pour garder un code propre et intégrable.'
       ],
       tech: ['Unity 3D', 'C#', 'Git'],
-      team: 'Équipe de 7 : 3 programmeurs, 3 artistes, 1 sound designer.',
+      team: 'Équipe de développement multi-rôles.',
       context: 'Projet étudiant sur plusieurs semaines.',
       build: '',
       source: '',
@@ -46,19 +46,19 @@
     },
     {
       id: '3',
-      title: 'Projet Mobile',
+      title: 'Pulsar',
       role: 'Mobile Gameplay Programmer',
       path: 'pages/projet3.html',
       variant: 'medium',
-      summary: 'Version mobile pensée pour les contrôles tactiles et la performance.',
-      pitch: 'Un projet mobile centré sur la prise en main tactile, la stabilité et l\'optimisation Android.',
+      summary: 'Projet mobile pensé pour les contrôles tactiles et la performance.',
+      pitch: 'Un projet centré sur la prise en main tactile, la stabilité et l\'optimisation mobile.',
       bullets: [
         'Intégration des contrôles tactiles et de leur retour visuel.',
         'Optimisation des performances pour une exécution fluide sur mobile.',
         'Gestion de la progression et des données de session.'
       ],
       tech: ['Unity', 'C#', 'Android'],
-      team: 'Équipe de 7 : pôles programme, art et audio.',
+      team: 'Équipe pluridisciplinaire.',
       context: 'Projet étudiant orienté mobile.',
       build: '',
       source: '',
@@ -68,12 +68,12 @@
     },
     {
       id: '4',
-      title: 'Multijoueur',
+      title: "Heaven's Doom",
       role: 'Network Gameplay Programmer',
       path: 'pages/projet4.html',
       variant: 'small',
-      summary: 'Architecture réseau et synchronisation des joueurs.',
-      pitch: 'Un projet multijoueur où l\'objectif était de garder les interactions claires, stables et synchronisées.',
+      summary: 'Projet orienté interaction, rythme et synchronisation.',
+      pitch: 'Un projet où l\'objectif était de garder les interactions claires, stables et synchronisées.',
       bullets: [
         'Mise en place de la base réseau et des échanges de données.',
         'Synchronisation des déplacements, des collisions et du score.',
@@ -90,11 +90,11 @@
     },
     {
       id: '5',
-      title: 'SFML',
+      title: 'Ghost and Protocol',
       role: 'C++ Systems Programmer',
       path: 'pages/projet5.html',
       variant: 'small',
-      summary: 'Moteur en C++ avec boucle de jeu et collisions.',
+      summary: 'Projet technique en C++ avec boucle de jeu et collisions.',
       pitch: 'Un projet bas niveau où j\'ai travaillé la boucle de jeu, la structure du code et les collisions.',
       bullets: [
         'Création de la boucle de jeu et du pipeline de rendu.',
@@ -102,7 +102,7 @@
         'Système de collision 2D simple et robuste.'
       ],
       tech: ['C++', 'SFML', 'Git'],
-      team: 'Équipe de 7 : répartition par modules.',
+      team: 'Répartition par modules.',
       context: 'Projet technique sur moteur 2D.',
       build: '',
       source: '',
@@ -112,11 +112,11 @@
     },
     {
       id: '6',
-      title: 'CSFML',
+      title: 'Soulbound',
       role: 'C Systems Programmer',
       path: 'pages/projet6.html',
       variant: 'small',
-      summary: 'Bas niveau en C avec rendu graphique maîtrisé.',
+      summary: 'Projet bas niveau en C avec rendu graphique maîtrisé.',
       pitch: 'Un projet orienté C où j\'ai travaillé sur l\'affichage, les structures et la logique de jeu.',
       bullets: [
         'Programmation du rendu et de la logique principale en C.',
@@ -124,7 +124,7 @@
         'Travail sur la clarté du code et l\'organisation des fichiers.'
       ],
       tech: ['C', 'CSFML', 'Git'],
-      team: 'Équipe de 7 : projet collectif.',
+      team: 'Projet collectif.',
       context: 'Projet technique en langage C.',
       build: '',
       source: '',
@@ -175,10 +175,6 @@
             <p class="site-kicker">Portfolio développeur jeu vidéo</p>
             <h1 class="site-title">6 projets, une lecture rapide.</h1>
             <p class="site-lead">Une grille bento sobre pour présenter les projets les plus solides, avec une hiérarchie claire et des accès directs à chaque deep dive.</p>
-          </div>
-          <div class="site-actions">
-            <a class="button" href="#projects">Voir les projets</a>
-            <a class="button secondary" href="#contact">CV / Contact</a>
           </div>
         </header>
 
