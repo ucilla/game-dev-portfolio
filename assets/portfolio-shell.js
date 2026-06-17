@@ -6,16 +6,22 @@
       role: 'Gameplay Programmer',
       path: 'pages/projet1.html',
       variant: 'featured',
-      summary: 'Projet d\'action rapide centré sur le feeling, la lisibilité et le rythme.',
-      pitch: 'Un projet pensé pour être immédiat à comprendre, nerveux et agréable à jouer.',
+      summary: 'Fast-paced action project focused on feel, clarity, and momentum.',
+      pitch: 'In an infested subway, an immune man harnesses his powers to gather resources, craft a survival suit, and fight his way to a hospital to create a cure.',
       bullets: [
-        'Prototype du déplacement et de la boucle de gameplay principale.',
-        'Mise en place d\'une interface simple et lisible pour accompagner l\'action.',
-        'Intégration des retours visuels pour garder une lecture claire en jeu.'
+        'Complete Player Controller (Wall Running, Sliding, Grappling Hook, etc.).',
+        'Level Design (Levels 1 & 2 Fully Completed + Environment Art).',
+        'Wave & Enemy System (Sirens, AI Movement, Behavior Logic).',
+        'Atmosphere (Lighting, Fog, Water & Smoke Shaders).',
+        'Shooting & Movement Feedback (Head Bob, FOV Effects, Recoil).',
+        'Inventory Save System & Resource Gathering Mechanics.',
+        'Puzzles & Cutscenes (Levels 1 & 2).',
+        'VFX & Miscellaneous Effects (Impacts, Sparks, Explosions, Death Effects).',
+        'SFX (50% Complete).'
       ],
       tech: ['Unity', 'C#', 'Git'],
-      team: 'Projet personnel / équipe réduite.',
-      context: 'Prototype orienté gameplay.',
+      team: 'Developers\n\nClément Martin\nAndrea Catanese\nMatéo Goncalves\nRaphael Travers\nEmilien Chastel\nRomain Le Corre\nThomas Berville\n\nArtists\n\nEthan Dunand\nLilou Michel-Cuny\nMax Vancaeneghem',
+      context: 'In development. The core gameplay loop, level progression, and survival systems are in place, while remaining content and polish are still being completed.',
       build: '',
       source: '',
       trailer: 'Trailer gameplay à intégrer.',
@@ -213,17 +219,17 @@
 
   const renderProjectPage = (project) => {
     const buildButton = project.build
-      ? `<a class="btn btn-primary" href="${project.build}" target="_blank" rel="noreferrer">Jouer / Télécharger le Build</a>`
-      : '<span class="btn btn-primary is-disabled">Jouer / Télécharger le Build</span>';
+      ? `<a class="btn btn-primary" href="${project.build}" target="_blank" rel="noreferrer">Play / Download Build</a>`
+      : '<span class="btn btn-primary is-disabled">Play / Download Build</span>';
 
     const sourceButton = project.source
-      ? `<a class="btn" href="${project.source}" target="_blank" rel="noreferrer">Code Source</a>`
-      : '<span class="btn is-disabled">Code Source</span>';
+      ? `<a class="btn" href="${project.source}" target="_blank" rel="noreferrer">Source Code</a>`
+      : '<span class="btn is-disabled">Source Code</span>';
 
     document.title = `${project.title} - Portfolio`;
     document.body.innerHTML = `
       <main class="portfolio-shell project-shell">
-        <a class="back-link" href="../Site.html">← Retour au portfolio</a>
+        <a class="back-link" href="../Site.html">← Back to portfolio</a>
 
         <section class="project-hero">
           <div class="media">
@@ -236,7 +242,7 @@
           </div>
           <div class="project-title-row">
             <div>
-              <p class="site-kicker">Projet ${escapeHtml(project.id)}</p>
+              <p class="site-kicker">Project ${escapeHtml(project.id)}</p>
               <h1 class="project-title">${escapeHtml(project.title)} — ${escapeHtml(project.role)}</h1>
               <p class="project-role">${escapeHtml(project.summary)}</p>
             </div>
@@ -248,12 +254,12 @@
             <h2>Pitch</h2>
             <p>${escapeHtml(project.pitch)}</p>
 
-            <h2>Ce que j\'ai fait</h2>
+            <h2>What I Worked On</h2>
             <ul class="list description-list">
               ${renderListItems(project.bullets)}
             </ul>
 
-            <h2>Galerie</h2>
+            <h2>Gallery</h2>
             <div class="grid">
               ${project.gallery.map((item) => `<div class="shot">${escapeHtml(item)}</div>`).join('')}
             </div>
@@ -265,11 +271,11 @@
               <p>${project.tech.map(escapeHtml).join(' • ')}</p>
             </div>
             <div class="panel meta-block">
-              <h2>Équipe</h2>
+              <h2>Team</h2>
               <p>${escapeHtml(project.team)}</p>
             </div>
             <div class="panel meta-block">
-              <h2>Contexte</h2>
+              <h2>Context</h2>
               <p>${escapeHtml(project.context)}</p>
             </div>
           </aside>
