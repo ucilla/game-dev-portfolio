@@ -15,47 +15,22 @@
     const selectorsByPage = () => {
         if (document.querySelector('.projects-grid')) {
             return [
-                { label: 'Nom du site', selector: 'header h1', type: 'text' },
-                { label: 'Sous-titre', selector: 'header h2', type: 'text' },
-                { label: 'Lien LinkedIn', selector: '.links a:nth-child(1)', type: 'link' },
-                { label: 'Lien GitHub', selector: '.links a:nth-child(2)', type: 'link' },
-                { label: 'Lien CV', selector: '.links a:nth-child(3)', type: 'link' },
-                { label: 'Titre console', selector: '.matrix-console-title', type: 'text' },
-                { label: 'Etat console', selector: '.matrix-console-status', type: 'text' },
-                { label: 'Pied de console', selector: '.matrix-console-footer', type: 'text' },
                 ...Array.from(document.querySelectorAll('.card')).flatMap((card, index) => {
                     const cardNumber = index + 1;
                     return [
-                        { label: `Projet ${cardNumber} - Titre`, selector: `.card:nth-of-type(${cardNumber}) .card-title`, type: 'text' },
                         { label: `Projet ${cardNumber} - Image / GIF`, selector: `.card:nth-of-type(${cardNumber}) .card-img-placeholder`, type: 'html' },
-                        { label: `Projet ${cardNumber} - Lien`, selector: `.card:nth-of-type(${cardNumber})`, type: 'link' },
-                        { label: `Projet ${cardNumber} - Description`, selector: `.card:nth-of-type(${cardNumber}) .card-description`, type: 'html' },
-                        { label: `Projet ${cardNumber} - Bouton principal`, selector: `.card:nth-of-type(${cardNumber}) .shell-button.primary`, type: 'link' },
-                        { label: `Projet ${cardNumber} - Bouton secondaire`, selector: `.card:nth-of-type(${cardNumber}) .shell-button:not(.primary)`, type: 'link' }
                     ];
                 }),
-                { label: 'Titre shell', selector: '.shell-title', type: 'text' },
-                { label: 'Sous-titre shell', selector: '.shell-subtitle', type: 'text' },
-                { label: 'Label shell', selector: '.shell-label', type: 'text' },
-                { label: 'Console live', selector: '.console-lines', type: 'html' },
-                { label: 'Cartes projets', selector: '.shell-card h3', type: 'text' },
-                { label: 'Texte carte projet', selector: '.shell-card p', type: 'text' },
-                { label: 'Tag carte', selector: '.shell-tag', type: 'text' }
             ];
         }
 
         return [
-            { label: 'Titre du projet', selector: 'header h1', type: 'text' },
-            { label: 'Lien retour', selector: '.back-link', type: 'link' },
             { label: 'Bloc vidéo', selector: '.media > div', type: 'html' },
-            { label: 'Résumé', selector: '.container .panel > p', type: 'text' },
-            { label: 'Titre de section', selector: '.panel h2', type: 'text' },
-            { label: 'Liste de détails', selector: '.list', type: 'html' },
-            { label: 'Saisie galerie', selector: '.grid .shot', type: 'text' },
-            { label: 'Section détails', selector: '.description-list', type: 'html' },
-            { label: 'Galerie', selector: '.grid', type: 'html' },
-            { label: 'Bouton build 1', selector: '.downloads .btn:nth-child(1)', type: 'link' },
-            { label: 'Bouton build 2', selector: '.downloads .btn:nth-child(2)', type: 'link' }
+            ...Array.from(document.querySelectorAll('.grid .shot')).map((shot, index) => ({
+                label: `Gallery Item ${index + 1}`,
+                selector: `.grid .shot:nth-of-type(${index + 1})`,
+                type: 'html'
+            })),
         ];
     };
 
@@ -232,26 +207,13 @@
         return `body > ${parts.join(' > ')}`;
     };
 
-    const isTextEditingTarget = (element) => {
-        if (!element || element.closest('.dev-mode-editor, .dev-mode-badge, .dev-mode-hint')) {
-            return false;
-        }
-
-        const tag = element.tagName;
-        if (['INPUT', 'TEXTAREA', 'SELECT', 'OPTION', 'SCRIPT', 'STYLE'].includes(tag)) {
-            return false;
-        }
-
-        return Boolean(element.textContent && element.textContent.trim());
-    };
-
     const resolveEditableTarget = (target) => {
         const element = target instanceof Element ? target : target?.parentElement;
         if (!element) {
             return null;
         }
 
-        const mediaSelectors = ['.card-img-placeholder', '.media', '.shot', '.video-container', '.grid .shot'];
+        const mediaSelectors = ['.card-img-placeholder', '.media', '.shot'];
         const mediaTarget = mediaSelectors.map((selector) => element.closest(selector)).find(Boolean);
         if (mediaTarget) {
             const matchedMedia = selectorsByPage().find((field) => document.querySelector(field.selector) === mediaTarget || mediaTarget.matches(field.selector));
@@ -259,36 +221,6 @@
                 return { field: matchedMedia, element: mediaTarget };
             }
             return { field: { label: 'Media', type: 'html' }, element: mediaTarget };
-        }
-
-        const linkTarget = element.closest('a[href]');
-        if (linkTarget) {
-            const matchedLink = selectorsByPage().find((field) => field.type === 'link' && (document.querySelector(field.selector) === linkTarget || linkTarget.matches(field.selector) || linkTarget.closest(field.selector)));
-            if (matchedLink) {
-                return { field: matchedLink, element: linkTarget };
-            }
-            return { field: { label: 'Lien', type: 'link' }, element: linkTarget };
-        }
-
-        let current = element;
-        while (current && current !== document.body) {
-            const matchedText = selectorsByPage().find((field) => field.type !== 'link' && (document.querySelector(field.selector) === current || current.matches?.(field.selector)));
-            if (matchedText) {
-                return { field: matchedText, element: current };
-            }
-
-            if (isTextEditingTarget(current) && ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'LI', 'SPAN', 'DIV', 'BUTTON', 'LABEL', 'A'].includes(current.tagName)) {
-                return {
-                    field: {
-                        label: current.dataset.devLabel || current.textContent.trim().slice(0, 40) || 'Texte',
-                        selector: buildDomPath(current),
-                        type: current.children.length ? 'html' : 'text'
-                    },
-                    element: current
-                };
-            }
-
-            current = current.parentElement;
         }
 
         return null;
@@ -411,7 +343,7 @@
         }
     };
 
-    const isMediaField = (field) => field.label.includes('Image / GIF') || field.label.includes('Bloc vidéo') || field.label.includes('Galerie');
+    const isMediaField = (field) => field.type === 'html';
 
     const pickFileForField = async (field, element) => {
         const acceptsVideo = field.label.includes('vidéo') || field.label.includes('Bloc vidéo');
@@ -543,26 +475,6 @@
             }
             return;
         }
-
-        const resolvedValue = typeof value === 'object' && value !== null ? value.value : value;
-
-        if (field.type === 'text') {
-            element.textContent = resolvedValue;
-            return;
-        }
-        if (field.type === 'html') {
-            element.innerHTML = resolvedValue;
-            return;
-        }
-        if (field.type === 'link') {
-            const parts = String(resolvedValue).split('\n');
-            if (parts[0]) {
-                element.setAttribute('href', parts[0]);
-            }
-            if (parts[1]) {
-                element.textContent = parts[1];
-            }
-        }
     };
 
     const applySavedState = () => {
@@ -583,7 +495,7 @@
         }
 
         if (devEnabled) {
-            showModeIndicator('MODE DEV ACTIF - clique un element pour modifier');
+            showModeIndicator('MODE DEV ACTIF - clique une image ou une video');
             const hint = document.createElement('div');
             hint.className = 'dev-mode-hint';
             hint.textContent = 'F10 pour quitter le mode dev';
@@ -629,7 +541,7 @@
 
         const meta = document.createElement('div');
         meta.className = 'meta';
-        meta.textContent = field.type === 'media' || isMediaField(field) ? 'Clique pour remplacer le media local ou distant.' : 'Edition directe sur l’element sélectionné.';
+        meta.textContent = 'Clique pour remplacer le media local ou distant.';
         editor.appendChild(meta);
 
         const form = document.createElement('div');
@@ -666,90 +578,11 @@
                 }
             });
             form.appendChild(chooser);
-        } else if (field.type === 'html') {
-            const textarea = document.createElement('textarea');
-            textarea.value = currentValue ?? element.innerHTML;
-            form.appendChild(textarea);
-
-            const row = document.createElement('div');
-            row.className = 'dev-mode-actions';
-
-            const save = document.createElement('button');
-            save.type = 'button';
-            save.textContent = 'Sauvegarder';
-            save.addEventListener('click', async () => {
-                await saveAndRefresh(textarea.value);
-            });
-
-            const cancel = document.createElement('button');
-            cancel.type = 'button';
-            cancel.textContent = 'Fermer';
-            cancel.className = 'secondary';
-            cancel.addEventListener('click', clearActiveEditor);
-
-            row.appendChild(save);
-            row.appendChild(cancel);
-            form.appendChild(row);
-        } else if (field.type === 'link') {
-            const hrefInput = document.createElement('input');
-            const textInput = document.createElement('input');
-            const parts = (currentValue ?? `${element.getAttribute('href') || ''}\n${element.textContent.trim() || ''}`).split('\n');
-            hrefInput.value = parts[0] || element.getAttribute('href') || '';
-            textInput.value = parts[1] || element.textContent.trim() || '';
-
-            const hrefLabel = document.createElement('label');
-            hrefLabel.textContent = 'URL';
-            const textLabel = document.createElement('label');
-            textLabel.textContent = 'Texte du lien';
-
-            form.appendChild(hrefLabel);
-            form.appendChild(hrefInput);
-            form.appendChild(textLabel);
-            form.appendChild(textInput);
-
-            const row = document.createElement('div');
-            row.className = 'dev-mode-actions';
-
-            const save = document.createElement('button');
-            save.type = 'button';
-            save.textContent = 'Sauvegarder';
-            save.addEventListener('click', async () => {
-                await saveAndRefresh(`${hrefInput.value}\n${textInput.value}`);
-            });
-
-            const cancel = document.createElement('button');
-            cancel.type = 'button';
-            cancel.textContent = 'Fermer';
-            cancel.className = 'secondary';
-            cancel.addEventListener('click', clearActiveEditor);
-
-            row.appendChild(save);
-            row.appendChild(cancel);
-            form.appendChild(row);
         } else {
-            const input = document.createElement('input');
-            input.value = currentValue ?? element.textContent.trim();
-            form.appendChild(input);
-
-            const row = document.createElement('div');
-            row.className = 'dev-mode-actions';
-
-            const save = document.createElement('button');
-            save.type = 'button';
-            save.textContent = 'Sauvegarder';
-            save.addEventListener('click', async () => {
-                await saveAndRefresh(input.value);
-            });
-
-            const cancel = document.createElement('button');
-            cancel.type = 'button';
-            cancel.textContent = 'Fermer';
-            cancel.className = 'secondary';
-            cancel.addEventListener('click', clearActiveEditor);
-
-            row.appendChild(save);
-            row.appendChild(cancel);
-            form.appendChild(row);
+            const fallback = document.createElement('div');
+            fallback.className = 'dev-mode-status is-visible is-error';
+            fallback.textContent = 'This mode is media only.';
+            form.appendChild(fallback);
         }
 
         editor.appendChild(form);

@@ -20,7 +20,7 @@
         'SFX (50% Complete).'
       ],
       tech: ['Unity', 'C#', 'Git'],
-      team: 'Developers\n\nClément Martin\nAndrea Catanese\nMatéo Goncalves\nRaphael Travers\nEmilien Chastel\nRomain Le Corre\nThomas Berville\n\nArtists\n\nEthan Dunand\nLilou Michel-Cuny\nMax Vancaeneghem',
+      team: '<u>Developers</u>\nClément Martin\nAndrea Catanese\nMatéo Goncalves\nRaphael Travers\nEmilien Chastel\nRomain Le Corre\nThomas Berville\n\n<u>Artists</u>\nEthan Dunand\nLilou Michel-Cuny\nMax Vancaeneghem',
       context: 'In development. The core gameplay loop, level progression, and survival systems are in place, while remaining content and polish are still being completed.',
       build: '',
       source: '',
@@ -217,6 +217,8 @@
 
   const renderListItems = (items) => items.map((item) => `<li>${escapeHtml(item)}</li>`).join('');
 
+  const renderMultilineText = (value) => String(value).replace(/\n/g, '<br>');
+
   const renderProjectPage = (project) => {
     const buildButton = project.build
       ? `<a class="btn btn-primary" href="${project.build}" target="_blank" rel="noreferrer">Play / Download Build</a>`
@@ -272,7 +274,7 @@
             </div>
             <div class="panel meta-block">
               <h2>Team</h2>
-              <p>${escapeHtml(project.team)}</p>
+              <p>${renderMultilineText(project.team)}</p>
             </div>
             <div class="panel meta-block">
               <h2>Context</h2>
