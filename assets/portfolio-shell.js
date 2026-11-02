@@ -157,7 +157,7 @@
         'Menu hub explorable donnant accès à l\'arène, à la salle d\'entraînement et aux crédits.',
         'Système de pourcentage de dégâts : plus un joueur prend de coups, plus il est éjecté loin.'
       ],
-      tech: ['Unity', 'C#', 'Git'],
+      tech: ['C++', 'SFML', 'Git'],
       team: [
         { label: 'Programmation', names: ['Alexis Boyer', 'Andrea Catanese', 'Amandine Celerier', 'Emilien Chastel', 'Léon Devals', 'Clément Martin', 'Raphaël Travers'] },
         { label: 'Infographie', names: ['Ewan Georget', 'Lenny Martinez', 'Kévin Mollon'] },
@@ -444,7 +444,7 @@
             <div class="filters" role="group" aria-label="Filtrer les projets">
               <button class="filter is-active" type="button" data-filter="all">Tous <span>${pad(projects.length)}</span></button>
               <button class="filter" type="button" data-filter="unity">Unity <span>${pad(projects.filter((project) => filterGroup(project) === 'unity').length)}</span></button>
-              <button class="filter" type="button" data-filter="native">C <span>${pad(projects.filter((project) => filterGroup(project) === 'native').length)}</span></button>
+              <button class="filter" type="button" data-filter="native">C / C++ <span>${pad(projects.filter((project) => filterGroup(project) === 'native').length)}</span></button>
             </div>
           </div>
           <div class="projects-grid">
