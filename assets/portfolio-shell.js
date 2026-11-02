@@ -393,7 +393,7 @@
         </li>
       `).join('');
     const links = contactLinks();
-    const stack = ['Unity', 'DOTS / ECS', 'C#', 'C', 'CSFML', 'Git', 'Gameplay', 'Player controller', 'IA & boids', 'Level design', 'Shaders', 'VFX', 'Mobile', 'Sound design'];
+    const stack = ['Unity', 'DOTS / ECS', 'C#', 'C++', 'C', 'SFML', 'CSFML', 'Git', 'Multijoueur', 'Gameplay', 'Player controller', 'IA & boids', 'Level design', 'Shaders', 'VFX', 'Mobile', 'Sound design'];
     const marquee = stack.map((item) => `<span>${escapeHtml(item)}</span>`).join('<i aria-hidden="true">✦</i>');
 
     document.title = `${profile.name} — ${profile.role}`;
@@ -456,19 +456,19 @@
           <div class="about-intro" data-reveal>
             <p class="kicker mono">// Parcours</p>
             <h2 class="section-title">Un jeu complet<br>par an.</h2>
-            <p class="about-text">Formé à ${escapeHtml(profile.school)}, j'ai livré un jeu complet chaque année avec des équipes de programmeurs, d'artistes et de sound designers. J'aime toucher à tout ce qui se ressent manette en main, et je m'occupe aussi du son quand l'équipe en a besoin.</p>
+            <p class="about-text">En dernière année à ${escapeHtml(profile.school)}, je me spécialise dans la conception de systèmes de jeu dynamiques : FPS, mobilité et multijoueur. J'ai livré un jeu complet chaque année, et mon rôle de lead technique sur des projets réunissant 7 développeurs m'a appris à soigner l'architecture du code, l'intégration et la résolution des conflits. J'aime travailler le ressenti du jeu, qu'on joue à la manette ou au clavier, et je m'occupe aussi du son quand l'équipe en a besoin.</p>
             <div class="skills">
               <div class="skill" data-reveal>
                 <span class="skill-label mono">Moteurs &amp; libs</span>
-                <p>Unity (DOTS / ECS) · CSFML</p>
+                <p>Unity (DOTS / ECS) · SFML · CSFML</p>
               </div>
               <div class="skill" data-reveal>
                 <span class="skill-label mono">Langages</span>
-                <p>C# · C</p>
+                <p>C# · C++ · C</p>
               </div>
               <div class="skill" data-reveal>
                 <span class="skill-label mono">Spécialités</span>
-                <p>Player controller · IA &amp; nuées · Optimisation · Level design · VFX &amp; shaders · Sound design</p>
+                <p>Player controller · Multijoueur · IA &amp; nuées · Optimisation · Architecture &amp; intégration · Level design · VFX &amp; shaders · Sound design</p>
               </div>
             </div>
           </div>
