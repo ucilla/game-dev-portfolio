@@ -127,10 +127,10 @@
       build: '',
       source: '',
       creajeux: '',
-      trailer: null,
-      cover: '',
-      thumb: '',
-      gallery: []
+      trailer: { type: 'youtube', id: 'jZOdfHd9T84', poster: 'assets/projects/ninja-frog/hero.jpg' },
+      cover: 'assets/projects/ninja-frog/hero.jpg',
+      thumb: 'assets/projects/ninja-frog/hero.jpg',
+      gallery: ['assets/projects/ninja-frog/shot-1.jpg', 'assets/projects/ninja-frog/hero.jpg', 'assets/projects/ninja-frog/shot-2.jpg']
     },
     {
       id: '4',
@@ -306,9 +306,9 @@
 
   const renderTags = (items) => items.map((item) => `<span class="tag">${escapeHtml(item)}</span>`).join('');
 
-  const renderCover = (project, image) => {
+  const renderCover = (project, image, eager) => {
     if (image) {
-      return `<img src="${asset(image)}" alt="" loading="lazy" decoding="async">`;
+      return `<img src="${asset(image)}" alt="" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
     }
 
     // Pas encore de capture : visuel généré à partir du titre et de la couleur du projet
@@ -591,7 +591,7 @@
       ${renderNav()}
       <main class="project-shell">
         <section class="project-hero">
-          <div class="project-hero__bg">${renderCover(project, project.cover)}</div>
+          <div class="project-hero__bg">${renderCover(project, project.cover, true)}</div>
           <div class="project-hero__content portfolio-shell">
             <a class="back-link mono" href="../Site.html#projets">← Tous les projets</a>
             <p class="kicker mono">Projet ${pad(index + 1)} / ${pad(projects.length)}${project.tagline ? ` — ${escapeHtml(project.tagline)}` : ''}</p>
