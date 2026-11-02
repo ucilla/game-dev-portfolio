@@ -17,6 +17,7 @@
     {
       id: '1',
       slug: 'escape-moscow',
+      leadProgrammer: true,
       title: 'Escape Moscow',
       tagline: 'Retrouvez la surface',
       role: 'Gameplay Programmer',
@@ -82,17 +83,16 @@
         'Physique : transition dynamique des masses et comportement cinématique des structures assemblées lors des impacts.'
       ],
       tech: ['Unity', 'DOTS / ECS', 'C#', 'Unity Physics', 'Unity Splines'],
-      pattern: 'swarm',
       team: 'Projet réalisé seul.',
       status: 'En cours',
       context: 'Projet technique de soutenance, toujours en cours de développement.',
       build: '',
       source: '',
       creajeux: '',
-      trailer: null,
-      cover: '',
-      thumb: '',
-      gallery: []
+      trailer: { type: 'video', src: 'assets/projects/projet-de-soutenance/trailer.mp4', poster: 'assets/projects/projet-de-soutenance/hero.jpg' },
+      cover: 'assets/projects/projet-de-soutenance/hero.jpg',
+      thumb: 'assets/projects/projet-de-soutenance/hero.jpg',
+      gallery: ['assets/projects/projet-de-soutenance/shot-1.jpg', 'assets/projects/projet-de-soutenance/shot-2.jpg']
     },
     {
       id: '2',
@@ -135,6 +135,7 @@
     {
       id: '4',
       slug: 'heavens-doom',
+      leadProgrammer: true,
       title: "Heaven's Doom",
       tagline: 'Combattez et éjectez votre adversaire',
       role: 'Gameplay Programmer',
@@ -174,6 +175,7 @@
     {
       id: '3',
       slug: 'pulsar',
+      leadProgrammer: true,
       title: 'Pulsar',
       tagline: 'Tower defense mobile',
       role: 'Mobile Gameplay Programmer',
@@ -212,6 +214,7 @@
     {
       id: '6',
       slug: 'soulbound',
+      leadProgrammer: true,
       title: 'SoulBound',
       tagline: 'Choisissez votre route !',
       role: 'Gameplay Programmer',
@@ -494,7 +497,7 @@
     <li><span class="mono">${pad(index + 1)}</span><p>${escapeHtml(item)}</p></li>
   `).join('');
 
-  const renderTeam = (team) => {
+  const renderTeam = (team, leadProgrammer) => {
     if (typeof team === 'string') {
       return `<p>${escapeHtml(team)}</p>`;
     }
@@ -502,7 +505,13 @@
     return team.map((group) => `
       <div class="credit-group">
         <span class="mono">${escapeHtml(group.label)}</span>
-        <p>${group.names.map((name) => (/catan[eè]se/i.test(name) ? `<strong>${escapeHtml(name)}</strong>` : escapeHtml(name))).join('<br>')}</p>
+        <p>${group.names.map((name) => {
+          if (!/catan[eè]se/i.test(name)) {
+            return escapeHtml(name);
+          }
+          const note = leadProgrammer && group.label === 'Programmation' ? ' <span class="credit-note">(Lead Prog)</span>' : '';
+          return `<strong>${escapeHtml(name)}</strong>${note}`;
+        }).join('<br>')}</p>
       </div>
     `).join('');
   };
@@ -623,7 +632,7 @@
               ${project.team ? `
                 <div class="aside-block">
                   <span class="mono aside-label">Crédits</span>
-                  ${renderTeam(project.team)}
+                  ${renderTeam(project.team, project.leadProgrammer)}
                 </div>
               ` : ''}
             </aside>

@@ -603,18 +603,7 @@ img {
     #101013;
 }
 
-/* Nuée de points pour le projet DOTS */
-.cover-art--swarm {
-  background:
-    radial-gradient(circle at 62% 38%, color-mix(in srgb, var(--accent) 34%, transparent), transparent 52%),
-    radial-gradient(circle, color-mix(in srgb, var(--accent) 70%, transparent) 1.2px, transparent 1.6px) 0 0 / 14px 14px,
-    radial-gradient(circle, rgba(255, 255, 255, 0.35) 1px, transparent 1.4px) 7px 7px / 14px 14px,
-    #0b0f14;
-  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 60% 40%, #000 40%, rgba(0, 0, 0, 0.35));
-  mask-image: radial-gradient(ellipse 85% 75% at 60% 40%, #000 40%, rgba(0, 0, 0, 0.35));
-}
-
-.cover-art--swarm .cover-art__title {
+.cover-art__title {
   display: none;
 }
 
@@ -1158,6 +1147,12 @@ img {
 
 .credit-group strong {
   color: var(--text-main);
+}
+
+.credit-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
 }
 
 .trailer,
