@@ -58,26 +58,103 @@
       gallery: ['assets/projects/escape-moscow/hero.jpg', 'assets/projects/escape-moscow/shot-1.jpg']
     },
     {
+      id: '7',
+      slug: 'projet-de-soutenance',
+      title: 'Projet de soutenance',
+      tagline: '70 000 entités à 60+ FPS',
+      role: 'Technical Programmer',
+      path: 'pages/projet7.html',
+      variant: 'tall',
+      accent: '#38bdf8',
+      year: '',
+      level: '',
+      platform: 'PC',
+      genre: 'Démo technique',
+      duration: '',
+      languages: '',
+      summary: 'Démo technique sous Unity DOTS : une nuée de 70 000 agents qui se déplace, change de forme et s\'assemble en temps réel.',
+      pitch: 'Ce projet de soutenance simule une nuée de dizaines de milliers d\'agents avec l\'ECS de Unity. Les agents suivent des flux générés par splines, épousent la forme de modèles 3D et s\'assemblent en structures qui réagissent physiquement aux impacts, le tout en gardant plus de 60 FPS.',
+      bullets: [
+        'Performance & ECS : rendu et instanciation massive de 70 000 entités à plus de 60 FPS grâce à DOTS.',
+        'IA & nuée : algorithme des boids de Reynolds (séparation, alignement, cohésion) couplé à Unity Physics.',
+        'Algorithmique : morphing par assignation dynamique des agents sur les vertices des meshes, sans croisement de trajectoires.',
+        'Splines : intégration de Unity Splines pour générer des flux adaptatifs et des tentacules.',
+        'Physique : transition dynamique des masses et comportement cinématique des structures assemblées lors des impacts.'
+      ],
+      tech: ['Unity', 'DOTS / ECS', 'C#', 'Unity Physics', 'Unity Splines'],
+      pattern: 'swarm',
+      team: 'Projet réalisé seul.',
+      status: 'En cours',
+      context: 'Projet technique de soutenance, toujours en cours de développement.',
+      build: '',
+      source: '',
+      creajeux: '',
+      trailer: null,
+      cover: '',
+      thumb: '',
+      gallery: []
+    },
+    {
+      id: '2',
+      slug: 'ninja-frog',
+      title: 'Ninja Frog',
+      tagline: 'Party game de parcours en multijoueur',
+      role: 'Gameplay Programmer & Level Designer',
+      path: 'pages/projet2.html',
+      variant: 'tall',
+      accent: '#4ade80',
+      year: '',
+      level: '',
+      platform: 'PC',
+      genre: 'Party game',
+      duration: '',
+      languages: '',
+      summary: 'Party game multijoueur de parcours au style cartoon, construit autour d\'un système de mouvement nerveux.',
+      pitch: 'Ninja Frog est un party game multijoueur dans lequel les joueurs s\'affrontent sur des parcours au style cartoon. J\'y ai conçu tout le système de déplacement du personnage ainsi que le level design des niveaux.',
+      bullets: [
+        'Système de déplacement complet du personnage.',
+        'Wall run.',
+        'Dash.',
+        'Glissade (slide).',
+        'Grappin.',
+        'Level design des niveaux.'
+      ],
+      tech: ['Unity', 'C#', 'Git'],
+      team: [
+        { label: 'Programmation', names: ['Andrea Catanese', 'Clément Martin'] }
+      ],
+      context: 'Projet étudiant réalisé en binôme.',
+      build: '',
+      source: '',
+      creajeux: '',
+      trailer: null,
+      cover: '',
+      thumb: '',
+      gallery: []
+    },
+    {
       id: '4',
       slug: 'heavens-doom',
       title: "Heaven's Doom",
       tagline: 'Combattez et éjectez votre adversaire',
       role: 'Gameplay Programmer',
       path: 'pages/projet4.html',
-      variant: 'tall',
+      variant: 'half',
       accent: '#ef4444',
       year: '2025',
       level: '2e année',
       platform: 'PC',
-      genre: 'Combat',
+      genre: 'Combat 2D',
       duration: '8 semaines',
       languages: 'Anglais',
-      summary: 'Jeu de combat où des combattants de cultures différentes s\'affrontent pour la dernière place au paradis.',
-      pitch: 'Heaven\'s Doom est un jeu de combat où vous incarnez des combattants de cultures différentes qui s\'affrontent pour la dernière place au paradis. Pour remporter la victoire, il faut éjecter son adversaire de l\'arène.',
+      summary: 'Jeu de combat 2D en vue de dessus : incarnez un viking ou une sorcière et éjectez votre adversaire de la plateforme.',
+      pitch: 'Heaven\'s Doom est un jeu de combat 2D en vue de dessus où des combattants de cultures différentes, un viking et une sorcière, s\'affrontent pour la dernière place au paradis. Pour gagner, il faut éjecter son adversaire de l\'arène : plus un combattant encaisse de coups, plus il est projeté loin.',
       bullets: [
-        'Mise en place de la base réseau et des échanges de données.',
-        'Synchronisation des déplacements, des collisions et du score.',
-        'Organisation du code pour faciliter les tests en coopération.'
+        'Player controller complet du viking, inspiré de Thor : marteau, foudre et attaques spéciales.',
+        'Système d\'objets à ramasser pendant les combats.',
+        'Événements dynamiques sur deux arènes : pluie de météorites et trou noir.',
+        'Menu hub explorable donnant accès à l\'arène, à la salle d\'entraînement et aux crédits.',
+        'Système de pourcentage de dégâts : plus un joueur prend de coups, plus il est éjecté loin.'
       ],
       tech: ['Unity', 'C#', 'Git'],
       team: [
@@ -95,13 +172,51 @@
       gallery: []
     },
     {
+      id: '3',
+      slug: 'pulsar',
+      title: 'Pulsar',
+      tagline: 'Tower defense mobile',
+      role: 'Mobile Gameplay Programmer',
+      path: 'pages/projet3.html',
+      variant: 'half',
+      accent: '#22d3ee',
+      year: '',
+      level: '',
+      platform: 'iOS, Android',
+      genre: 'Tower defense',
+      duration: '',
+      languages: '',
+      summary: 'Tower defense mobile jouable sur iOS et Android, avec joystick virtuel et rendu stylisé.',
+      pitch: 'Pulsar est un tower defense pensé pour le mobile. J\'y ai travaillé aussi bien le rendu que l\'équilibrage et la prise en main tactile, avec un objectif : que le jeu tourne et s\'affiche correctement sur tous les téléphones.',
+      bullets: [
+        'Rendu : éclairages, ombres et shader d\'outline.',
+        'Gameplay : équilibrage de la difficulté du tower defense.',
+        'UI / Input : intégration d\'un joystick virtuel pour mobile.',
+        'VFX : effets de muzzle flash lors des tirs.',
+        'Compatibilité : adaptation du jeu à tous les types de téléphones, sur iOS comme sur Android.'
+      ],
+      tech: ['Unity', 'C#', 'iOS', 'Android'],
+      team: [
+        { label: 'Programmation', names: ['Clément Martin', 'Andrea Catanese', 'Seven Fabris', 'Thomas Berville', 'Raphaël Travers', 'Emilien Chastel', 'Léon Devals'] },
+        { label: 'Infographie', names: ['Ewan Georget', 'Kévin Mollon', 'Ismael Zebar'] }
+      ],
+      context: 'Projet étudiant orienté mobile, réalisé en équipe de 10 personnes.',
+      build: '',
+      source: '',
+      creajeux: '',
+      trailer: null,
+      cover: '',
+      thumb: '',
+      gallery: []
+    },
+    {
       id: '6',
       slug: 'soulbound',
       title: 'SoulBound',
       tagline: 'Choisissez votre route !',
       role: 'Gameplay Programmer',
       path: 'pages/projet6.html',
-      variant: 'tall',
+      variant: 'half',
       accent: '#a78bfa',
       year: '2024',
       level: '1re année',
@@ -133,102 +248,38 @@
       gallery: []
     },
     {
-      id: '2',
-      slug: 'ninja-frog',
-      title: 'Ninja Frog',
-      tagline: 'Systèmes de gameplay et IA',
-      role: 'Systems Programmer',
-      path: 'pages/projet2.html',
-      variant: 'small',
-      accent: '#4ade80',
-      year: '',
-      level: '',
-      platform: '',
-      genre: '3D',
-      duration: 'Plusieurs semaines',
-      languages: '',
-      summary: 'Projet centré sur les systèmes de gameplay et la lisibilité des comportements.',
-      pitch: 'Un projet où j\'ai surtout travaillé la structure des comportements et la fluidité du gameplay.',
-      bullets: [
-        'Création et refactoring de la state machine des ennemis.',
-        'Mise en place des comportements de poursuite et de patrouille.',
-        'Travail en équipe avec Git pour garder un code propre et intégrable.'
-      ],
-      tech: ['Unity', 'C#', 'Git'],
-      team: 'Équipe de développement multi-rôles.',
-      context: 'Projet étudiant sur plusieurs semaines.',
-      build: '',
-      source: '',
-      creajeux: '',
-      trailer: null,
-      cover: '',
-      thumb: '',
-      gallery: []
-    },
-    {
-      id: '3',
-      slug: 'pulsar',
-      title: 'Pulsar',
-      tagline: 'Contrôles tactiles et performance',
-      role: 'Mobile Gameplay Programmer',
-      path: 'pages/projet3.html',
-      variant: 'small',
-      accent: '#22d3ee',
-      year: '',
-      level: '',
-      platform: 'Android',
-      genre: 'Mobile',
-      duration: '',
-      languages: '',
-      summary: 'Projet mobile pensé pour les contrôles tactiles et la performance.',
-      pitch: 'Un projet centré sur la prise en main tactile, la stabilité et l\'optimisation mobile.',
-      bullets: [
-        'Intégration des contrôles tactiles et de leur retour visuel.',
-        'Optimisation des performances pour une exécution fluide sur mobile.',
-        'Gestion de la progression et des données de session.'
-      ],
-      tech: ['Unity', 'C#', 'Android'],
-      team: 'Équipe pluridisciplinaire.',
-      context: 'Projet étudiant orienté mobile.',
-      build: '',
-      source: '',
-      creajeux: '',
-      trailer: null,
-      cover: '',
-      thumb: '',
-      gallery: []
-    },
-    {
       id: '5',
       slug: 'ghost-and-protocol',
       title: 'Ghost and Protocol',
-      tagline: 'Boucle de jeu et collisions en C++',
-      role: 'C++ Systems Programmer',
+      tagline: 'Coop à deux, réalisé en 48 h',
+      role: 'Gameplay Programmer',
       path: 'pages/projet5.html',
-      variant: 'small',
-      accent: '#e2e8f0',
+      variant: 'half',
+      accent: '#facc15',
       year: '',
       level: '',
       platform: 'PC',
-      genre: '2D',
-      duration: '',
+      genre: 'Coop / énigmes',
+      duration: '48 h (game jam)',
       languages: '',
-      summary: 'Projet technique en C++ avec boucle de jeu et collisions.',
-      pitch: 'Un projet bas niveau où j\'ai travaillé la boucle de jeu, la structure du code et les collisions.',
+      summary: 'Jeu coopératif à deux en local, dans l\'esprit d\'It Takes Two : il faut s\'entraider pour résoudre les énigmes.',
+      pitch: 'Réalisé en 48 heures lors d\'une game jam, Ghost and Protocol est un jeu coopératif à deux en local, dans l\'esprit d\'It Takes Two. Chaque joueur a son propre écran, et les deux doivent communiquer et s\'entraider pour résoudre les énigmes.',
       bullets: [
-        'Création de la boucle de jeu et du pipeline de rendu.',
-        'Gestion de la mémoire et des structures de données en C++.',
-        'Système de collision 2D simple et robuste.'
+        'Contrôleur et déplacements des personnages.',
+        'Caméra en écran partagé (split screen).',
+        'Conception et programmation des énigmes.'
       ],
-      tech: ['C++', 'SFML', 'Git'],
-      team: 'Répartition par modules.',
-      context: 'Projet technique sur moteur 2D.',
+      tech: ['Unity', 'C#'],
+      team: [
+        { label: 'Programmation', names: ['Andrea Catanese', 'Clément Martin'] }
+      ],
+      context: 'Game jam de 48 heures, en binôme.',
       build: '',
       source: '',
       creajeux: '',
-      trailer: null,
-      cover: '',
-      thumb: '',
+      trailer: { type: 'youtube', id: 'ye56rUxkFWk', poster: 'assets/projects/ghost-and-protocol/hero.jpg' },
+      cover: 'assets/projects/ghost-and-protocol/hero.jpg',
+      thumb: 'assets/projects/ghost-and-protocol/hero.jpg',
       gallery: []
     }
   ];
@@ -259,7 +310,7 @@
 
     // Pas encore de capture : visuel généré à partir du titre et de la couleur du projet
     return `
-      <div class="cover-art" aria-hidden="true">
+      <div class="cover-art${project.pattern ? ` cover-art--${project.pattern}` : ''}" aria-hidden="true">
         <span class="cover-art__title">${escapeHtml(project.title)}</span>
       </div>
     `;
@@ -339,7 +390,7 @@
         </li>
       `).join('');
     const links = contactLinks();
-    const stack = ['Unity', 'C#', 'C++', 'C', 'SFML', 'CSFML', 'Git', 'Gameplay', 'IA ennemie', 'Level design', 'Shaders', 'VFX', 'Sound design'];
+    const stack = ['Unity', 'DOTS / ECS', 'C#', 'C', 'CSFML', 'Git', 'Gameplay', 'Player controller', 'IA & boids', 'Level design', 'Shaders', 'VFX', 'Mobile', 'Sound design'];
     const marquee = stack.map((item) => `<span>${escapeHtml(item)}</span>`).join('<i aria-hidden="true">✦</i>');
 
     document.title = `${profile.name} — ${profile.role}`;
@@ -353,7 +404,7 @@
               <span class="hero-line">Andrea</span>
               <span class="hero-line hero-line--outline">Catanese</span>
             </h1>
-            <p class="hero-lead">Je conçois les systèmes qui rendent un jeu agréable à jouer : contrôleurs, IA, feedback et ambiance. Du platformer en C au FPS sous Unity, ${projects.length} projets réalisés en équipe.</p>
+            <p class="hero-lead">Je conçois les systèmes qui rendent un jeu agréable à jouer : contrôleurs, IA, feedback et ambiance. Du platformer en C au FPS sous Unity, jusqu'à une nuée de 70 000 entités sous DOTS.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#projets">Voir les projets</a>
               <a class="btn" href="${projects[0].path}">Jouer à ${escapeHtml(projects[0].title)}</a>
@@ -390,7 +441,7 @@
             <div class="filters" role="group" aria-label="Filtrer les projets">
               <button class="filter is-active" type="button" data-filter="all">Tous <span>${pad(projects.length)}</span></button>
               <button class="filter" type="button" data-filter="unity">Unity <span>${pad(projects.filter((project) => filterGroup(project) === 'unity').length)}</span></button>
-              <button class="filter" type="button" data-filter="native">C / C++ <span>${pad(projects.filter((project) => filterGroup(project) === 'native').length)}</span></button>
+              <button class="filter" type="button" data-filter="native">C <span>${pad(projects.filter((project) => filterGroup(project) === 'native').length)}</span></button>
             </div>
           </div>
           <div class="projects-grid">
@@ -406,15 +457,15 @@
             <div class="skills">
               <div class="skill" data-reveal>
                 <span class="skill-label mono">Moteurs &amp; libs</span>
-                <p>Unity · SFML · CSFML</p>
+                <p>Unity (DOTS / ECS) · CSFML</p>
               </div>
               <div class="skill" data-reveal>
                 <span class="skill-label mono">Langages</span>
-                <p>C# · C++ · C</p>
+                <p>C# · C</p>
               </div>
               <div class="skill" data-reveal>
                 <span class="skill-label mono">Spécialités</span>
-                <p>Player controller · IA · Level design · VFX &amp; shaders · Sound design</p>
+                <p>Player controller · IA &amp; nuées · Optimisation · Level design · VFX &amp; shaders · Sound design</p>
               </div>
             </div>
           </div>
@@ -514,6 +565,7 @@
       ['Genre', project.genre],
       ['Plateforme', project.platform],
       ['Durée', project.duration],
+      ['Statut', project.status],
       ['Langues', project.languages]
     ].filter(([, value]) => value);
 
@@ -568,10 +620,12 @@
                 <span class="mono aside-label">Contexte</span>
                 <p>${escapeHtml(project.context)}</p>
               </div>
-              <div class="aside-block">
-                <span class="mono aside-label">Crédits</span>
-                ${renderTeam(project.team)}
-              </div>
+              ${project.team ? `
+                <div class="aside-block">
+                  <span class="mono aside-label">Crédits</span>
+                  ${renderTeam(project.team)}
+                </div>
+              ` : ''}
             </aside>
           </section>
 
