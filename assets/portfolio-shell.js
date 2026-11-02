@@ -62,7 +62,7 @@
       id: '7',
       slug: 'projet-de-soutenance',
       title: 'Projet de soutenance',
-      tagline: '70 000 entités à 60+ FPS',
+      tagline: '500 000 entités à 60+ FPS',
       role: 'Technical Programmer',
       path: 'pages/projet7.html',
       variant: 'tall',
@@ -73,10 +73,10 @@
       genre: 'Démo technique',
       duration: '',
       languages: '',
-      summary: 'Démo technique sous Unity DOTS : une nuée de 70 000 agents qui se déplace, change de forme et s\'assemble en temps réel.',
+      summary: 'Démo technique sous Unity DOTS : une nuée de 500 000 agents qui se déplace, change de forme et s\'assemble en temps réel.',
       pitch: 'Ce projet de soutenance simule une nuée de dizaines de milliers d\'agents avec l\'ECS de Unity. Les agents suivent des flux générés par splines, épousent la forme de modèles 3D et s\'assemblent en structures qui réagissent physiquement aux impacts, le tout en gardant plus de 60 FPS.',
       bullets: [
-        'Performance & ECS : rendu et instanciation massive de 70 000 entités à plus de 60 FPS grâce à DOTS.',
+        'Performance & ECS : rendu et instanciation massive de 500 000 entités à plus de 60 FPS grâce à DOTS.',
         'IA & nuée : algorithme des boids de Reynolds (séparation, alignement, cohésion) couplé à Unity Physics.',
         'Algorithmique : morphing par assignation dynamique des agents sur les vertices des meshes, sans croisement de trajectoires.',
         'Splines : intégration de Unity Splines pour générer des flux adaptatifs et des tentacules.',
@@ -407,7 +407,7 @@
               <span class="hero-line">Andrea</span>
               <span class="hero-line hero-line--outline">Catanese</span>
             </h1>
-            <p class="hero-lead">Je conçois les systèmes qui rendent un jeu agréable à jouer : contrôleurs, IA, feedback et ambiance. Du platformer en C au FPS sous Unity, jusqu'à une nuée de 70 000 entités sous DOTS.</p>
+            <p class="hero-lead">Je conçois les systèmes qui rendent un jeu agréable à jouer : contrôleurs, IA, feedback et ambiance. Du platformer en C au FPS sous Unity, jusqu'à une nuée de 500 000 entités sous DOTS.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#projets">Voir les projets</a>
               <a class="btn" href="${projects[0].path}">Jouer à ${escapeHtml(projects[0].title)}</a>
