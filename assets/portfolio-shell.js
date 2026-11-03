@@ -207,9 +207,9 @@
       source: '',
       creajeux: '',
       trailer: null,
-      cover: '',
-      thumb: '',
-      gallery: []
+      cover: 'assets/projects/pulsar/hero.jpg',
+      thumb: 'assets/projects/pulsar/hero.jpg',
+      gallery: ['assets/projects/pulsar/shot-1.jpg', 'assets/projects/pulsar/shot-2.jpg', 'assets/projects/pulsar/shot-3.jpg', 'assets/projects/pulsar/shot-4.jpg']
     },
     {
       id: '6',
