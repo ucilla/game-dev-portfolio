@@ -207,9 +207,10 @@
       source: '',
       creajeux: '',
       trailer: null,
-      cover: 'assets/projects/pulsar/hero.jpg',
-      thumb: 'assets/projects/pulsar/hero.jpg',
-      gallery: ['assets/projects/pulsar/shot-1.jpg', 'assets/projects/pulsar/shot-2.jpg', 'assets/projects/pulsar/shot-3.jpg', 'assets/projects/pulsar/shot-4.jpg']
+      cover: 'assets/projects/pulsar/cover.jpg',
+      thumb: 'assets/projects/pulsar/cover.jpg',
+      coverPosition: 'center top',
+      gallery: ['assets/projects/pulsar/hero.jpg', 'assets/projects/pulsar/shot-2.jpg', 'assets/projects/pulsar/shot-3.jpg', 'assets/projects/pulsar/shot-4.jpg']
     },
     {
       id: '6',
@@ -308,7 +309,7 @@
 
   const renderCover = (project, image, eager) => {
     if (image) {
-      return `<img src="${asset(image)}" alt="" ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
+      return `<img src="${asset(image)}" alt=""${project.coverPosition ? ` style="object-position: ${project.coverPosition};"` : ''} ${eager ? 'fetchpriority="high"' : 'loading="lazy"'} decoding="async">`;
     }
 
     // Pas encore de capture : visuel généré à partir du titre et de la couleur du projet
@@ -418,7 +419,7 @@
             <div class="hero-screen__frame">
               ${showcase.map((project, index) => `
                 <figure class="hero-slide${index === 0 ? ' is-active' : ''}" data-path="${project.path}" data-title="${escapeHtml(project.title)}" data-meta="${escapeHtml([project.genre, project.year].filter(Boolean).join(' · '))}" style="--accent: ${project.accent};">
-                  <img src="${asset(project.cover)}" alt="Capture de ${escapeHtml(project.title)}" ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}>
+                  <img src="${asset(project.cover)}" alt="Capture de ${escapeHtml(project.title)}"${project.coverPosition ? ` style="object-position: ${project.coverPosition};"` : ''} ${index === 0 ? 'fetchpriority="high"' : 'loading="lazy"'}>
                 </figure>
               `).join('')}
               <span class="hud hud--tl"></span><span class="hud hud--tr"></span><span class="hud hud--bl"></span><span class="hud hud--br"></span>
